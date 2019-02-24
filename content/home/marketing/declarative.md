@@ -1,8 +1,8 @@
 ---
-title: Declarative
+title: Declarativ
 order: 0
 ---
 
-React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+React te ajută să creezi interfețe de utilizatori interactive. Proiectează vizualizări simple pentru fiecare stare din aplicația ta și React va actualiza și randa, într-un mod eficient, componentele potrivite când datele tale se schimbă.
 
-Declarative views make your code more predictable and easier to debug.
+Vizualizările declarative îți fac codul mai predictibil și mai ușor de depanat.

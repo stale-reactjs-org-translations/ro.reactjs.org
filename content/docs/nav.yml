@@ -1,85 +1,85 @@
-- title: Installation
+- title: Instalarea
   items:
     - id: getting-started
-      title: Getting Started
+      title: Începe
     - id: add-react-to-a-website
-      title: Add React to a Website
+      title: Adaugă React într-un website
     - id: create-a-new-react-app
-      title: Create a New React App
+      title: Crează o Nouă Aplicație React
     - id: cdn-links
-      title: CDN Links
-- title: Main Concepts
+      title: Link-uri CDN
+- title: Concepte Principale
   isOrdered: true
   items:
     - id: hello-world
-      title: Hello World
+      title: Salut Lume
     - id: introducing-jsx
-      title: Introducing JSX
+      title: Introducere JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: Randarea Elementelor
     - id: components-and-props
-      title: Components and Props
+      title: Componente și Proprietăți
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: Stare și Ciclu de viață
     - id: handling-events
-      title: Handling Events
+      title: Mânuirea Evenimentelor
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: Randarea Condiționată
     - id: lists-and-keys
-      title: Lists and Keys
+      title: Liste și Chei
     - id: forms
-      title: Forms
+      title: Formulare
     - id: lifting-state-up
-      title: Lifting State Up
+      title: Urcarea Stării
     - id: composition-vs-inheritance
-      title: Composition vs Inheritance
+      title: Compoziție vs Moștenire
     - id: thinking-in-react
-      title: Thinking In React
-- title: Advanced Guides
+      title: Gândirea în React
+- title: Ghiduri avansate
   items:
     - id: accessibility
-      title: Accessibility
+      title: Accesibilitate
     - id: code-splitting
-      title: Code-Splitting
+      title: Împărțirea Codului
     - id: context
       title: Context
     - id: error-boundaries
-      title: Error Boundaries
+      title: Limite de Erori
     - id: forwarding-refs
-      title: Forwarding Refs
+      title: Înaintarea Referințelor
     - id: fragments
-      title: Fragments
+      title: Fragmente
     - id: higher-order-components
-      title: Higher-Order Components
+      title: Componente de Ordin Superior
     - id: integrating-with-other-libraries
-      title: Integrating with Other Libraries
+      title: Integrarea cu Alte Biblioteci
     - id: jsx-in-depth
-      title: JSX In Depth
+      title: JSX Aprofundat
     - id: optimizing-performance
-      title: Optimizing Performance
+      title: Optimixarea Performanței
     - id: portals
-      title: Portals
+      title: Portale
     - id: react-without-es6
-      title: React Without ES6
+      title: React fără ES6
     - id: react-without-jsx
-      title: React Without JSX
+      title: React fără JSX
     - id: reconciliation
-      title: Reconciliation
+      title: Reconciliere
     - id: refs-and-the-dom
-      title: Refs and the DOM
+      title: Referințele și DOM-ul
     - id: render-props
-      title: Render Props
+      title: Proprietăți de randare
     - id: static-type-checking
-      title: Static Type Checking
+      title: Verificarea Tipului Statice
     - id: strict-mode
-      title: Strict Mode
+      title: Mod Strict
     - id: typechecking-with-proptypes
-      title: Typechecking With PropTypes
+      title: Verificarea tipului prin PropTypes
     - id: uncontrolled-components
-      title: Uncontrolled Components
+      title: Componente Incontrolabile
     - id: web-components
-      title: Web Components
-- title: API Reference
+      title: Componente Web
+- title: Referințe la API
   items:
     - id: react-api
       title: React
@@ -91,63 +91,63 @@
     - id: react-dom-server
       title: ReactDOMServer
     - id: dom-elements
-      title: DOM Elements
+      title: Elemente de DOM
     - id: events
       title: SyntheticEvent
     - id: test-utils
-      title: Test Utilities
+      title: TestUtilities
     - id: shallow-renderer
-      title: Shallow Renderer
+      title: ShallowRenderer
     - id: test-renderer
-      title: Test Renderer
+      title: TestRenderer
     - id: javascript-environment-requirements
-      title: JS Environment Requirements
+      title: Cerințe pentru mediul JS
     - id: glossary
-      title: Glossary
-- title: Hooks (New)
+      title: Glosar
+- title: Cârlige (Nou)
   isOrdered: true
   items:
       - id: hooks-intro
-        title: Introducing Hooks
+        title: Introducerea Cârligelor
       - id: hooks-overview
-        title: Hooks at a Glance
+        title: Cârlige dintr-o Privire
       - id: hooks-state
-        title: Using the State Hook
+        title: Folosind Starea Cârlig
       - id: hooks-effect
-        title: Using the Effect Hook
+        title: Folosind Efectul Cârlig
       - id: hooks-rules
-        title: Rules of Hooks
+        title: Regulile Cârligelor
       - id: hooks-custom
-        title: Building Your Own Hooks
+        title: Construing propiul tău Cârlig
       - id: hooks-reference
-        title: Hooks API Reference
+        title: Referințe la API-ul Cârligelor
       - id: hooks-faq
         title: Hooks FAQ
-- title: Contributing
+- title: Contribuție
   items:
   - id: how-to-contribute
-    title: How to Contribute
+    title: Cum să contribui
   - id: codebase-overview
-    title: Codebase Overview
+    title: Prezentarea generală a codului
   - id: implementation-notes
-    title: Implementation Notes
+    title: Note pentru implementare
   - id: design-principles
-    title: Design Principles
+    title: Principii de proiectare
 - title: FAQ
   items:
     - id: faq-ajax
-      title: AJAX and APIs
+      title: AJAX și API-uri
     - id: faq-build
-      title: Babel, JSX, and Build Steps
+      title: Babel, JSX și Pași de construcție
     - id: faq-functions
-      title: Passing Functions to Components
+      title: Pasarea Funcțiilor Componentelor
     - id: faq-state
-      title: Component State
+      title: Starea Componentelor
     - id: faq-styling
-      title: Styling and CSS
+      title: Stilizare și CSS
     - id: faq-structure
-      title: File Structure
+      title: Structura Fișierului
     - id: faq-versioning
-      title: Versioning Policy
+      title: Politice de Versionare
     - id: faq-internals
-      title: Virtual DOM and Internals
+      title: DOM Virtual și Interne

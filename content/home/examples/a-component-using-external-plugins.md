@@ -1,5 +1,5 @@
 ---
-title: O Componentă care Folosește Pluginuri Externe
+title: O Componentă care Folosește Plugin-uri Externe
 order: 3
 domid: markdown-example
 ---

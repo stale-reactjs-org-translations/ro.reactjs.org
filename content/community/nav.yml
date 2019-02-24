@@ -1,42 +1,42 @@
-- title: Community Resources
+- title: Resursele comunității
   items:
     - id: support
-      title: Support
+      title: Sprijin
     - id: courses
-      title: Courses
+      title: Cursuri
     - id: examples
-      title: Examples
+      title: Exemple
     - id: meetups
-      title: Meetups
+      title: Meetup-uri
     - id: conferences
-      title: Conferences
+      title: Conferințe
     - id: articles
-      title: Articles
+      title: Articole
     - id: podcasts
-      title: Podcasts
+      title: Podcast-uri
     - id: videos
-      title: Videos
+      title: Videoclipuri
     - id: external-resources
-      title: External Resources
-- title: Tools
+      title: Resurse Externe
+- title: Unelte
   items:
     - id: debugging-tools
-      title: Debugging
+      title: Depanare
     - id: component-workbenches
-      title: Component Workbenches
+      title: Bănci de lucru pentru Componente
     - id: jsx-integrations
-      title: JSX Integrations
+      title: Integrarea JSX
     - id: starter-kits
-      title: Starter Kits
+      title: Trusă pentru Început
     - id: routing
-      title: Routing
+      title: Rutare
     - id: model-management
-      title: Model Management
+      title: Administarea Modelului
     - id: data-fetching
-      title: Data Fetching
+      title: Aportul Datelor
     - id: testing
-      title: Testing
+      title: Testarea
     - id: ui-components
-      title: UI Components
+      title: Componente pentru UI
     - id: misc
-      title: Miscellaneous
+      title: Diverse

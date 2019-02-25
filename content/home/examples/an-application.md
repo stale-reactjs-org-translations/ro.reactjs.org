@@ -1,5 +1,5 @@
 ---
-title: O Aplicație
+title: O aplicație
 order: 2
 domid: todos-example
 ---

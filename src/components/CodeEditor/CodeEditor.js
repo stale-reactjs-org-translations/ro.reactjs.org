@@ -60,7 +60,7 @@ class CodeEditor extends Component {
           <br />
           <br />
           Acest lucru poate fi cauzat de blocarea reclamelor. Daca folosești
-          așa ceva, adaugă ro.reactjs.ro în listă astfel încât codul exemplu
+          așa ceva, adaugă ro.reactjs.org în listă astfel încât codul exemplu
           live să funcționeze.
         </span>
       );
@@ -200,7 +200,7 @@ class CodeEditor extends Component {
                   padding: '0 10px',
                   backgroundColor: colors.divider,
                 }}>
-                <MetaTitle>Resultat</MetaTitle>
+                <MetaTitle>Rezultat</MetaTitle>
               </div>
               <div
                 id={containerNodeID}

@@ -9,7 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-Deoarece elementele din form păstrează în mod natural o stare internă, elementele din form-ul HTML funcționează puțin diferit fata de celelalte elemente DOM din React. De exemplu, acest formular în HTML acceptă un singur nume:
+Deoarece elementele de formular păstrează în mod natural o stare internă, elementele din formular HTML funcționează puțin diferit față de celelalte elemente DOM din React. De exemplu, acest formular în HTML acceptă un singur nume:
 
 ```html
 <form>
@@ -21,15 +21,15 @@ Deoarece elementele din form păstrează în mod natural o stare internă, eleme
 </form>
 ```
 
-Când utilizatorul submite acest form va avea comportamentul implicit al unui form HTML de navigare către o pagină nouă. Dacă doriți acest comportament în React, cu siguranta va functiona. Totusi în majoritatea cazurilor, este convenabil să existe o funcție in JavaScript care sa gestioneaze submiterea formului și accesul la datele introduse de utilizator în form. Modul standard pentru a realiza acest lucru este cu o tehnică numită "componente controlate".
+Când utilizatorul depune acest formular va avea comportamentul implicit al unui form HTML de navigare către o pagină nouă. Dacă doriți acest comportament în React, cu siguranta va functiona. Totuși în majoritatea cazurilor, este convenabil să existe o funcție in JavaScript care sa gestioneaze submiterea formului și accesul la datele introduse de utilizator în form. Modul standard pentru a realiza acest lucru este cu o tehnică numită "componente controlate".
 
 ## Controlled Components {#controlled-components}
 
 În HTML, elementele specifice formului, cum ar fi `<input>`, `<textarea>`, și `<select>` îsi păstrează în mod obișnuit starea și o actualizează în funcție de datele introduse de utilizator. În React, starea mutabilă este de obicei păstrată în proprietatea state a componentelor și este actualizată doar cu [`setState()`](/docs/react-component.html#setstate).
 
-Putem combina cele două, făcând ca starea React să fie "singura sursă de adevăr". In felul acesta componenta React care redă un form va controla și ceea ce se întâmplă în acel form  pe baza datelor introduse ulterior de utilizator. Astfel un element de intrare al formului a cărui valoare este controlată de React se numește "componentă controlată".
+Putem combina cele două, făcând ca starea React să fie "singura sursă de adevăr". In felul acesta componenta React care redă un formular va controla și ceea ce se întâmplă în acel formular pe baza datelor introduse ulterior de utilizator. Astfel un element de intrare al formului a cărui valoare este controlată de React se numește "componentă controlată".
 
-De exemplu, dacă dorim ca in exemplul anterior să logăm numele la momentul trimiterii, putem implementa formul ca o componentă controlată:
+De exemplu, dacă dorim ca în exemplul anterior să autentificăm numele la momentul trimiterii, putem implementa formularul ca o componentă controlată:
 
 ```javascript{4,10-12,24}
 class NameForm extends React.Component {
@@ -202,7 +202,7 @@ Deoarece valoarea sa este doar pentru citire, este o componentă **necontrolată
 
 ## Handling Multiple Inputs {#handling-multiple-inputs} / Manipulare de intrări multiple
 
-Atunci când aveți nevoie să gestionați mai multe elemente de intrare controlate (`input`), puteți adăuga un atribut `name` pentru fiecare element si lasati funcția de manipulare să aleagă ce trebuie să facă în funcție de valoarea lui `event.target.name`.
+Atunci când aveți nevoie să gestionați mai multe elemente de intrare controlate (`input`), puteți adăuga un atribut `name` pentru fiecare element și lăsați funcția de manipulare să aleagă ce trebuie să facă în funcție de valoarea lui `event.target.name`.
 
 exemplu:
 
@@ -256,7 +256,7 @@ class Reservation extends React.Component {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
 
-Rețineți modul în care am folosit sintaxa ES6 pentru [proprietatea procesata nume](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) pentru a actualiza starea cheii corespunzătoare datei de intrare furnizate:
+Rețineți modul în care am folosit sintaxa ES6 pentru [proprietatea procesată nume](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) pentru a actualiza starea cheii corespunzătoare datei de intrare furnizate:
 
 ```js{2}
 this.setState({
@@ -276,7 +276,7 @@ De asemenea, deoarece `setState()` [imbina automat o stare parțială cu o stare
 
 ## Controlled Input Null Value {#controlled-input-null-value} / Valoarea  de Intrare Controlată Nulă 
 
-Specificînd proprietatea value pentru o [componentă controlată](/docs/forms.html#controlled-components), va împiedica utilizatorul să schimbe intrarea, doar dacă doriți acest lucru. Dacă ați specificat o `value`, dar intrarea este încă editabilă, este posibil să fi setat `value` fara sa va dati seama `undefined` sau `null`.
+Specificînd proprietatea value pentru o [componentă controlată](/docs/forms.html#controlled-components), va împiedica utilizatorul să schimbe intrarea, doar dacă doriți acest lucru. Dacă ați specificat o `value`, dar intrarea este încă editabilă, este posibil să fi setat `value` fără să vă dați seama `undefined` sau `null`.
 
 Următorul cod demonstrează acest lucru. (Intrarea este blocată la început, dar devine editabilă după o scurtă întârziere.)
 
@@ -291,8 +291,8 @@ setTimeout(function() {
 
 ## Alternatives to Controlled Components {#alternatives-to-controlled-components} / Alternative pentru componentele controlate 
 
-Uneori este dificil să folosiți componente controlate, deoarece trebuie să implementati un handler(manipulant) pentru evenimente pentru fiecare situatie în care datele dvs. se pot schimba și să conducă toate starile de intrare printr-o componentă React. Acest lucru poate deveni deosebit de enervant când convertiți un cod de  bază preexistentă în React sau integrați o aplicație React cu o bibliotecă non-React. În aceste situații, vă recomandăm să verificați [componentele necontrolate](/docs/uncontrolled-components.html), o tehnică alternativă pentru implementarea formul de intrare.
+Uneori este dificil să folosiți componente controlate, deoarece trebuie să implementați un handler(manipulant) pentru evenimente pentru fiecare situație în care datele dvs. se pot schimba și să conducă toate starile de intrare printr-o componentă React. Acest lucru poate deveni deosebit de enervant când convertiți un cod de bază preexistentă în React sau integrați o aplicație React cu o bibliotecă non-React. În aceste situații, vă recomandăm să verificați [componentele necontrolate](/docs/uncontrolled-components.html), o tehnică alternativă pentru implementarea formular de intrare.
 
 ## Fully-Fledged Solutions {#fully-fledged-solutions} / Soluții complete
 
-Dacă doriti o soluție completă inclusînd validarea, pastrarea câmpurilor vizitate și manipularea formului submis, atunci [Formik](https://jaredpalmer.com/formik) este una dintre alegerile populare. In orice caz, este construită pe aceleași principii ale componentelor controlate și ale starii gestionate - deci nu neglijați să le învățați.
+Dacă doriti o soluție completă incluzând validarea, păstrarea câmpurilor vizitate și administrarea depunerii formularului, atunci [Formik](https://jaredpalmer.com/formik) este una dintre alegerile populare. În orice caz, este construită pe aceleași principii ale componentelor controlate și ale stării gestionate - deci nu neglijați să le învățați.

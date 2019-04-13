@@ -8,9 +8,9 @@ prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
 
-React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.
+React are un model de compoziție puternic și vă recomandăm să utilizați compoziția în locul moștenirii pentru a reutiliza codul între componente.
 
-In this section, we will consider a few problems where developers new to React often reach for inheritance, and show how we can solve them with composition.
+În această secțiune, vom analiza câteva probleme în care dezvoltatorii novici în React aleg adesea moștenirea și vom arata cum le putem rezolva prin compoziție.
 
 ## Containment {#containment}
 

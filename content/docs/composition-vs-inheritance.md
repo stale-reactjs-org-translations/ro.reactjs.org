@@ -1,22 +1,22 @@
 ---
 id: composition-vs-inheritance
-title: Composition vs Inheritance
+titlu: Composition vs Inheritance
 permalink: docs/composition-vs-inheritance.html
 redirect_from:
   - "docs/multiple-components.html"
-prev: lifting-state-up.html
-next: thinking-in-react.html
+anterior: lifting-state-up.html
+urmator: thinking-in-react.html
 ---
 
-React are un model de compoziție puternic și vă recomandăm să utilizați compoziția în locul moștenirii pentru a reutiliza codul între componente.
+React are un model de compoziție puternic și vă recomandăm să utilizați compoziția în locul moștenirii pentru a reutiliza codul, între componente.
 
 În această secțiune, vom analiza câteva probleme în care dezvoltatorii novici în React aleg adesea moștenirea și vom arata cum le putem rezolva prin compoziție.
 
-## Containment {#containment}
+## Izolare {#containment}
 
-Some components don't know their children ahead of time. This is especially common for components like `Sidebar` or `Dialog` that represent generic "boxes".
+Unele componente nu își cunosc copiii înainte de timp. Acest lucru este valabil mai ales pentru componente precum `Sidebar` sau` Dialog` care reprezintă casete generice.
 
-We recommend that such components use the special `children` prop to pass children elements directly into their output:
+Recomandăm ca astfel de componente să utilizeze proprietățile specifice pentru `copii` astfel încât sa transmita elementele de copii direct în producția lor:
 
 ```js{4}
 function FancyBorder(props) {
@@ -28,7 +28,8 @@ function FancyBorder(props) {
 }
 ```
 
-This lets other components pass arbitrary children to them by nesting the JSX:
+Acest lucru permite altor componente să introducă in ele copii la întâmplare prin cuibărind JSX-ul:
+
 
 ```js{4-9}
 function WelcomeDialog() {
@@ -45,11 +46,12 @@ function WelcomeDialog() {
 }
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
+**[Incercați in CodePen](https://codepen.io/gaearon/pen/ozqNOV?editors=0010)**
 
-Anything inside the `<FancyBorder>` JSX tag gets passed into the `FancyBorder` component as a `children` prop. Since `FancyBorder` renders `{props.children}` inside a `<div>`, the passed elements appear in the final output.
+Orice element din interiorul tag-ul JSX `<FancyBorder>`devine trecut în componența` FancyBorder` ca si proprietăți de `copii` Din moment ce `FancyBorder` redă` {props.children} `in interiorul unui <div> `, elementele  apar în rezultatul final.
 
-While this is less common, sometimes you might need multiple "holes" in a component. In such cases you may come up with your own convention instead of using `children`:
+
+Chiar daca acest lucru este mai puțin frecvent, uneori este posibil să aveți nevoie de mai multe "găuri" într-o componentă. În astfel de cazuri, puteți veni cu propria dvs. convenție în loc să utilizați "copii":
 
 ```js{5,8,18,21}
 function SplitPane(props) {
@@ -78,15 +80,15 @@ function App() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
+[**Incercați in CodePen**](https://codepen.io/gaearon/pen/gwZOJp?editors=0010)
 
-React elements like `<Contacts />` and `<Chat />` are just objects, so you can pass them as props like any other data. This approach may remind you of "slots" in other libraries but there are no limitations on what you can pass as props in React.
+Elementele React precum `<Contacts />` și `<Chat />` sunt doar obiecte, astfel le poți trece ca si proprietati, ca orice alte date. Această abordare vă poate aminti de "slots" din alte librari, dar nu există nicio limitare a ceea ce puteți trece ca elemente de recuzită în React.
+
 
 ## Specialization {#specialization}
+Cateodată ne gândim la componente ca find "cazuri speciale" a altor comnponente. De exemplu am putea spunde ca un `WelcomeDialog` e un cas special a `Dialog`-ului.
 
-Sometimes we think about components as being "special cases" of other components. For example, we might say that a `WelcomeDialog` is a special case of `Dialog`.
-
-In React, this is also achieved by composition, where a more "specific" component renders a more "generic" one and configures it with props:
+In React, acest lucru este deasemenea arhivat de către compoziție,unde o componenta mai "specifica" reda una mai "generica" si o configureaza cu proprietati:
 
 ```js{5,8,16-18}
 function Dialog(props) {
@@ -111,9 +113,10 @@ function WelcomeDialog() {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
+[**Incercați in CodePen**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
 
-Composition works equally well for components defined as classes:
+Compoziția funcționează la fel de bine pentru componente definite ca si clase:
+
 
 ```js{10,27-31}
 function Dialog(props) {
@@ -161,12 +164,12 @@ class SignUpDialog extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
+[**Incercați in CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
 
-## So What About Inheritance? {#so-what-about-inheritance}
+## Si despre mostenire? {#so-what-about-inheritance}
 
-At Facebook, we use React in thousands of components, and we haven't found any use cases where we would recommend creating component inheritance hierarchies.
+La Facebook, folosim React in mii de componente, si nu am nici un caz unde am recomanda crearea ierarhiilor de mostenire a componentelor.
 
-Props and composition give you all the flexibility you need to customize a component's look and behavior in an explicit and safe way. Remember that components may accept arbitrary props, including primitive values, React elements, or functions.
+Proprietațile și compoziția vă oferă toată flexibilitatea de care aveți nevoie pentru a particulariza aspectul și comportamentul unei componente într-un mod explicit și sigur. Amintiți-vă că, componentele pot accepta proprietați arbitrare, inclusiv valori primitive, elemente React sau funcții.
 
-If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or a class, without extending it.
+Daca doriți să refolosiți o funcționalitate non-UI intre componente, vă sugerăm să o extrageți într-un modul JavaScript separat.Componentele pot importa si folosi acea funcție,obiect sau clasă, fără să o extindă.

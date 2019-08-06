@@ -37,12 +37,11 @@ Primul lucru pe care vreţi să-l faceţi este să desenaţi dreptunghiuri în j
 
 Dar cum vă daţi seama ce ar trebui sa fie o componenta de sine statoare? Utilizați aceleași tehnici pentru a decide dacă trebuie să creați o nouă funcție sau un obiect. O astfel de tehnică este [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), care reprezintă faptul că o componentă trebuie sa facă un singur lucru, ideal. Dacă tinde să crească, ar trebui să fie descompusă în subcomponente mai mici.
 
-Deoarece afișați adesea un model de date JSON unui utilizator, veți observa că, dacă modelul dvs. a fost construit corect, interfața dvs. de utilizator (și, prin urmare, structura dvs. de componente) va fi minunată. Asta deoarece UI-ul și modelele de date tind să adere la aceeași *arhitectură de informații*, ceea ce înseamnă că munca de separare a UI-ului în componente este adesea trivială. împarţiţi-o doar în componente care reprezintă exact o singură piesă a modelului dvs. de date.
-
+Deoarece afișați adesea un model de date JSON unui utilizator, veți observa că, dacă modelul dvs. a fost construit corect, interfața dvs. de utilizator (și, prin urmare, structura dvs. de componente) se va potrivi de minune. Asta deoarece UI-ul și modelele de date tind să adere la aceeași *arhitectură de informații*. Separați-vă UI-ul în componente, în așa fel încât fiecare componentă se potrivește cu o singură parte din modelul dvs. de date.
 
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
-Puteti observa aici ca avem cinci componente intr-o singura aplicatie. Am redactat italic datele pe care fiecare componentă le reprezintă.
+Puteti observa aici că avem cinci componente într-o singură aplicație. Am redactat italic datele pe care fiecare componentă le reprezintă.
 
   1. **`FilterableProductTable` (orange):** conţine exemplul în întregime
   2. **`SearchBar` (blue):** primește toate *datele introduse de utilizator*
@@ -52,7 +51,7 @@ Puteti observa aici ca avem cinci componente intr-o singura aplicatie. Am redact
 
 Dacă vă uitați la `ProductTable`, veţi vedea că antetul tabelului (care conține etichetele `Name` și `Price`) nu este o componentă proprie. Aceasta este o chestiune de preferință și există un argument care poate fi făcut în oricare dintre cazuri. Pentru acest exemplu, l-am lăsat ca parte a componentei `ProductTable` deoarece face parte din redarea *colecției de date*, care este responsabilitatea componentei `ProductTable`. Cu toate acestea, dacă acest antet devine complex (dacă am fi adăugat butoane pentru sortare), ar fi cu siguranță logic să-i faci o componentă proprie `ProductTableHeader`.
 
-Acum, că am identificat componentele în schiţa noastră, să le aranjăm într-o ierarhie. Asta e ușor. Componentele care apar într-o altă componentă a modelului ar trebui să apară ca un copil în ierarhie:
+Acum, că am identificat componentele în schiţa noastră, să le aranjăm într-o ierarhie. Componentele care apar într-o altă componentă a modelului ar trebui să apară ca un copil în ierarhie:
 
   * `FilterableProductTable`
     * `SearchBar`
@@ -71,19 +70,19 @@ Pentru a construi o versiune statică a aplicației dvs. care redă modelul dvs.
 
 Puteți construi de sus în jos sau de jos în sus. Adică, puteți începe fie să construiți componentele din vârful ierarhie (adică începând cu `FilterableProductTable`), fie cu cele inferioare în ea (`ProductRow`). În exemplele mai simple, este de obicei mai ușor să mergeți de sus în jos, iar în cazul proiectelor mai mari, este mai ușor să mergeți de jos în sus și să scrieți teste pe măsură ce construiți.
 
-La sfârșitul acestei etape, veți avea o bibliotecă de componente reutilizabile care vă vor reda într-un mod grafic modelul de date. Componentele vor avea numai metode `render ()`, deoarece aceasta este o versiune statică a aplicației. Componenta din vârful ierarhiei (`FilterableProductTable`) vă va lua modelul de date ca un prop. Dacă faceţi o modificare de bază a modelului de date și apelaţi din nou `ReactDOM.render()`, interfața grafică va fi actualizată. Este ușor să vedeți cum este actualizat interfața grafică și unde să faceți modificări, deoarece nu se întâmplă nimic complicat. **One-way data flow** din React (numit și *one-way binding*) păstrează totul modular și rapid.
+La sfârșitul acestei etape, veți avea o bibliotecă de componente reutilizabile care vă vor reda într-un mod grafic modelul de date. Componentele vor avea numai metode `render()`, deoarece aceasta este o versiune statică a aplicației. Componenta din vârful ierarhiei (`FilterableProductTable`) vă va lua modelul de date ca un prop. Dacă faceţi o modificare de bază a modelului de date și apelaţi din nou `ReactDOM.render()`, interfața grafică va fi actualizată. Puteți să vedeți cum este actualizat interfața grafică și unde să faceți modificări, deoarece nu se întâmplă nimic complicat. **One-way data flow** din React (numit și *one-way binding*) păstrează totul modular și rapid.
 
 Consultaţi vă rog [documentaţia React](/docs/) dacă aveți nevoie de ajutor pentru completarea acestui pas.
 
 ### Un Scurt Interludiu: Props vs State {#a-brief-interlude-props-vs-state}
 
-Există două tipuri de date "model" în React: props și state. Este important să înțelegeți distincția dintre cele două; parcurge-ţi [documentaţia oficială React](/docs/interactivity-and-dynamic-uis.html) dacă nu sunteți sigur ce este diferența.
+Există două tipuri de date "model" în React: props și state. Este important să înțelegeți distincția dintre cele două; parcurge-ţi [documentaţia oficială React](/docs/interactivity-and-dynamic-uis.html) dacă nu sunteți sigur ce este diferența. Citiți si [FAQ: What is the difference between state and props?](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
 
 ## Pasul 3: Identificaţi Reprezentarea Minimă (dar completă) a State-ului Interfeţei Grafice {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
-Pentru a face interfața grafică interactivă, trebuie să puteți declanșa modificări ale modelului de date care stau la baza acesteia. React face ca acest lucru să fie ușor cu **state**.
+Pentru a face interfața grafică interactivă, trebuie să puteți declanșa modificări ale modelului de date care stau la baza acesteia. React face acest lucru cu **state**.
 
-Pentru a construi corect aplicația, trebuie mai întâi să vă gândiți la numarul minim de schimbări in state de care aplicația dvs. are nevoie. Cheia aici este [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Aflați reprezentarea minimală absolută a state-ului de care are nevoie aplicația dvs. și calculați tot ce aveți nevoie la cerere. De exemplu, dacă construiți o listă TODO, păstrați doar array de elemente TODO; nu păstrați o variabilă de state separată pentru numărul elementelor. În schimb, atunci când doriți să redați numărul de elemente, luați pur și simplu lungimea array-ului de elemente TODO.
+Pentru a construi corect aplicația, trebuie mai întâi să vă gândiți la numarul minim de schimbări in state de care aplicația dvs. are nevoie. Cheia aici este [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Aflați reprezentarea minimală absolută a state-ului de care are nevoie aplicația dvs. și calculați tot ce aveți nevoie la cerere. De exemplu, dacă construiți o listă TODO, păstrați un array de elemente TODO; nu păstrați o variabilă de state separată pentru numărul elementelor. În schimb, atunci când doriți să redați numărul de elemente. În schimb, când vreți să randați lungimea listei TODO,  luați lungimea array-ului de elemente TODO.
 
 Gândiți-vă la toate fragmentele de date din exemplul aplicației noastre. Vom avem:
 
@@ -92,7 +91,7 @@ Gândiți-vă la toate fragmentele de date din exemplul aplicației noastre. Vom
   * Valoarea checkbox-ului
   * Lista de produse filtrate
 
-Să trecem prin fiecare și să ne dăm seama care este state. Puneţi-vă doar trei întrebări despre fiecare bucată de date:
+Să trecem prin fiecare și să ne dăm seama care este state. Puneţi-vă trei întrebări despre fiecare bucată de date:
 
   1. Este pasat de la un părinte prin props? Dacă da, probabil că nu este state.
   2. Rămâne neschimbată în timp? Dacă da, probabil că nu este state.
@@ -137,13 +136,11 @@ Puteți începe a vedea cum se va comporta aplicația dvs.: setați `filterText`
 
 Până acum, am construit o aplicație care se randează corect în funcție de props și state care parcurg ierarhia. Acum este momentul să adăugăm flux de date în sens invers: componentele de formular de la baza ierarhiei trebuie să actualizeze state-ul în `FilterableProductTable`.
 
-React face ca acest flux de date să fie explicit pentru a înțelege mai ușor modul în care funcționează programul dvs., dar necesită mai mult cod scris decât tradiționala two-way data binding.
+React face ca acest flux de date să fie explicit pentru a te ajuta să înțelegi cum funcționează programul dvs., dar necesită puțin mai mult cod scris decât tradiționala two-way data binding.
 
 Dacă încercați să tastați sau să bifați caseta din versiunea curentă a exemplului, veți vedea că React ignoră input-ul dvs. Acest lucru este intenționat, întrucât am setat ca prop-ul `value` al campului `input` să fie întotdeauna egal cu `state`-ul pasat de la `FilterableProductTable`.
 
 Să ne gândim la ce vrem să se întâmple. Vrem să ne asigurăm că, de fiecare dată când utilizatorul schimbă formularul, actualizăm state-ul pentru a reflecta input-ul utilizatorului. Întrucât componentele ar trebui să-și actualizeze propriul state, `FilterableProductTable` va transmite callback-uri către `SearchBar` care vor fi apelate ori de câte ori state-ul trebuie actualizat. Putem folosi event-ul `onChange` al input-urilor pentru a fi notificat. Callback-urile pasate de `FilterableProductTable` vor apela `setState()`, iar aplicația va fi actualizată.
-
-Deși sună complex, sunt doar câteva linii de cod. Și este cu adevărat explicit modul în care datele dvs. parcurg întreaga aplicație.
 
 ## Şi Gata {#and-thats-it}
 

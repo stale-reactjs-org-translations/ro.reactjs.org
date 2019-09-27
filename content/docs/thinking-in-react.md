@@ -12,7 +12,7 @@ React este, în opinia noastră, modalitatea principală de a construi aplicați
 
 Una dintre multiplele părți importante din React este cum te face să te gândești la aplicații pe măsură ce le construiești. În acest articol, vă vom îndruma prin procesul de creare al unui tabel de produse ce permite funcţionalitatea de căutate, folosind React.
 
-## Porneşte de la o Schiţă {#start-with-a-mock}
+## Porneşte de la o schiţă {#start-with-a-mock}
 
 Imaginați-vă că avem deja un API care returnează un JSON și o schiţă de la designerul nostru. Schiţa arată astfel:
 
@@ -31,7 +31,7 @@ API-ul nostru JSON returnează date care arată în felul următor:
 ];
 ```
 
-## Pasul 1: Împărţiţi UI-ul Într-o Ierarhie De Componente {#step-1-break-the-ui-into-a-component-hierarchy}
+## Pasul 1: Împărţiţi UI-ul într-o ierarhie de componente {#step-1-break-the-ui-into-a-component-hierarchy}
 
 Primul lucru pe care vreţi să-l faceţi este să desenaţi dreptunghiuri în jurul fiecarei componente (şi subcomponente) in schiţă şi daţi-le un nume tuturor. Dacă lucreaţi cu un artist grafic, este posibil ca ei sa fi facut deja asta, asa ca vorbiţi cu ei! Numele layer-elor de Photoshop ar putea fi numele componetelor dumneavoastră de React!
 
@@ -59,7 +59,7 @@ Acum, că am identificat componentele în schiţa noastră, să le aranjăm înt
       * `ProductCategoryRow`
       * `ProductRow`
 
-## Pasul 2: Construiţi O Versiune Statică în React {#step-2-build-a-static-version-in-react}
+## Pasul 2: Construiţi o versiune statică în React {#step-2-build-a-static-version-in-react}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -74,11 +74,11 @@ La sfârșitul acestei etape, veți avea o bibliotecă de componente reutilizabi
 
 Consultaţi vă rog [documentaţia React](/docs/) dacă aveți nevoie de ajutor pentru completarea acestui pas.
 
-### Un Scurt Interludiu: Props vs State {#a-brief-interlude-props-vs-state}
+### Un scurt interludiu: Props vs State {#a-brief-interlude-props-vs-state}
 
 Există două tipuri de date "model" în React: props și state. Este important să înțelegeți distincția dintre cele două; parcurge-ţi [documentaţia oficială React](/docs/interactivity-and-dynamic-uis.html) dacă nu sunteți sigur ce este diferența. Citiți si [FAQ: What is the difference between state and props?](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
 
-## Pasul 3: Identificaţi Reprezentarea Minimă (dar completă) a State-ului Interfeţei Grafice {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
+## Pasul 3: Identificaţi reprezentarea minimă (dar completă) a State-ului interfeţei grafice {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
 Pentru a face interfața grafică interactivă, trebuie să puteți declanșa modificări ale modelului de date care stau la baza acesteia. React face acest lucru cu **state**.
 
@@ -104,7 +104,7 @@ Lista originală de produse este transmisă ca props, deci nu este state. Textul
   * Textul căutării introdus de utilizator
   * Valoarea checkbox-ului
 
-## Pasul 4: Identificaţi Unde Ar Trebui Să Existe State-ul Dumneavoastră {#step-4-identify-where-your-state-should-live}
+## Pasul 4: Identificaţi unde ar trebui să existe State-ul dumneavoastră {#step-4-identify-where-your-state-should-live}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/qPrNQZ">Thinking In React: Step 4</a> on <a href="https://codepen.io">CodePen</a>.</p>
 
@@ -129,8 +129,7 @@ Foarte bine, deci am decis că state-ul nostru se află în `FilterableProductTa
 
 Puteți începe a vedea cum se va comporta aplicația dvs.: setați `filterText` cu `"bilă"` și reîncărcaţi aplicația. Veți vedea că tabelul de date este actualizat corect.
 
-## Step 5: Add Inverse Data Flow {#step-5-add-inverse-data-flow}
-## Pasul 5: Adaugaţi Flux de Date Invers {#step-5-add-inverse-data-flow}
+## Pasul 5: Adaugaţi flux de date invers {#step-5-add-inverse-data-flow}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/LzWZvb">Thinking In React: Step 5</a> on <a href="https://codepen.io">CodePen</a>.</p>
 
@@ -142,6 +141,6 @@ Dacă încercați să tastați sau să bifați caseta din versiunea curentă a e
 
 Să ne gândim la ce vrem să se întâmple. Vrem să ne asigurăm că, de fiecare dată când utilizatorul schimbă formularul, actualizăm state-ul pentru a reflecta input-ul utilizatorului. Întrucât componentele ar trebui să-și actualizeze propriul state, `FilterableProductTable` va transmite callback-uri către `SearchBar` care vor fi apelate ori de câte ori state-ul trebuie actualizat. Putem folosi event-ul `onChange` al input-urilor pentru a fi notificat. Callback-urile pasate de `FilterableProductTable` vor apela `setState()`, iar aplicația va fi actualizată.
 
-## Şi Gata {#and-thats-it}
+## S-a terminat {#and-thats-it}
 
 Sperăm că acest lucru vă oferă o idee despre cum să vă gândiți la construcția de componente și aplicații cu React. Deși este posibil să tastați ceva mai mult decât obișnuiați, amintiți-vă că, în general, cod este citit mult mai mult decât este scris și este extrem de ușor să citiți acest cod modular şi explicit. Pe măsură ce începeți să construiți mari librării de componente, veți aprecia această explicitate și modularitate, iar odată cu reutilizarea codului, liniile dvs. de cod vor începe să se micșoreze. :)

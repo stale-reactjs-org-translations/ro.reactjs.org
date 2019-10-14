@@ -332,7 +332,11 @@ Reține că pentru randarea componentelor `lazy` este necesară randarea unui co
 
 ### `React.Suspense` {#reactsuspense}
 
+<<<<<<< HEAD
 `React.Suspense` iți permite să specifici indicatorul de încărcare în cazul în care unele componente din ierarhia copil nu sunt gata pentru randare. În prezent, componentele lazy loading sunt **singurele** cazuri suportate de `<React.Suspense>`:
+=======
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 ```js
 // Acest component este încărcat dinamic

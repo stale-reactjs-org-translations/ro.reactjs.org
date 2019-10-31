@@ -9,7 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-Formularele HTML funcționează un pic diferit față de alte elemente DOM din React, datorită faptului ca elementele din formulare își păstrează o parte din stare în mod natural. De exemplu, următorul formular, scris in HTML simplu, acceptă un singur nume:
+Formularele HTML funcționează un pic diferit față de alte elemente DOM din React, datorită faptului că elementele din formulare își păstrează o parte din stare în mod natural. De exemplu, următorul formular, scris in HTML simplu, acceptă un singur nume:
 
 ```html
 <form>
@@ -25,7 +25,7 @@ Acest formular menține comportamentul natural al unui formular HTML de a naviga
 
 ## Componente controlate {#controlled-components}
 
-În HTML, elemente din formulare precum `<input>`, `<textarea>`, și `<select>` își mențin starea în mod natural și o actualizează pe baza informațiilor introduse de utilizator. În React, starea variabilă este in mod normal ținută in proprietatea de stare a unei componente, și actualizată numai prin [`setState()`](/docs/react-component.html#setstate).
+În HTML, elementele din formulare precum `<input>`, `<textarea>`, și `<select>` își mențin starea în mod natural și o actualizează pe baza informațiilor introduse de utilizator. În React, starea variabilă este in mod normal ținută in proprietatea de stare a unei componente, și actualizată numai prin [`setState()`](/docs/react-component.html#setstate).
 
 Putem să combinăm cele doua abordări prin declararea stării din React ca fiind "singura sursă a adevărului". În acest caz, componenta din React care va randa formularul va controla și ce se va întampla în interiorul formularului în momentul în care informația este modificată. Un element al formularului a cărui valoare este controlată de React in acest mod se numește "componentă controlată".  
 
@@ -82,7 +82,7 @@ handleChange(event) {
 
 ```html
 <textarea>
-  Salut, aceste este un text intr-o zona de text
+  Salut, aceste este un text într-o zonă de text
 </textarea>
 ```
 
@@ -137,7 +137,7 @@ De remarcat că `this.state.value` este inițializată in constructor, și astfe
   <option value="mango">Mango</option>
 </select>
 ```
-De remarcat că opțiunea `Nuca de cocos` este selectată inițial, datorită atributului `selected`. În schimb, în React vom folosi un atribut `value` direct pe elementul rădăcină `select` în locul atributului `selected`. Această modalitate este mai convenabilă într-o compomentă controlată datorită faptului că actualizarea se va face într-un singur loc. De exemplu:
+De remarcat că opțiunea `Nuca de cocos` este selectată inițial, datorită atributului `selected`. În schimb, în React vom folosi un atribut `value` direct pe elementul rădăcină `select` în locul atributului `selected`. Această modalitate este mai convenabilă într-o componentă controlată datorită faptului că actualizarea se va face într-un singur loc. De exemplu:
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
@@ -179,7 +179,7 @@ class FlavorForm extends React.Component {
 
 [**Incearcă exemplul pe site-ul CodePen**](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
 
-Această abordare are ca efect funcționarea similara a elementelor `<input type="text">`, `<textarea>`, și `<select>` - toate acceptă un atribut `value` care se poate folosi pentru a implementa o conmponentă controlată. 
+Această abordare are ca efect funcționarea similara a elementelor `<input type="text">`, `<textarea>`, și `<select>` - toate acceptă un atribut `value` care se poate folosi pentru a implementa o componentă controlată. 
 
 > Notă
 >

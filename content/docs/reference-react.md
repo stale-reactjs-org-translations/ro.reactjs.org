@@ -49,7 +49,7 @@ Vezi [React fără JSX](/docs/react-without-jsx.html) pentru mai multe informaț
 
 ### Fragmente {#fragments}
 
-`React` oferă de asemenea un component pentru randarea de elemente multiple fără un container.
+`React` oferă de asemenea o componentă pentru randarea de elemente multiple fără un container.
 
 - [`React.Fragment`](#reactfragment)
 
@@ -106,7 +106,7 @@ Vezi [Referință API pentru React.Component](/docs/react-component.html) pentru
 
 `React.PureComponent` este similar cu [`React.Component`](#reactcomponent). Diferența dintre ele este că [`React.Component`](#reactcomponent) nu implementează [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), iar `React.PureComponent` o implementează cu un shallow prop și compararea state-ului. 
 
-Dacă metoda `render()` a unui component React randează același rezultat considerând aceleași props și același state, poți folosi `React.PureComponent` pentru o creștere de performanță în unele cazuri.
+Dacă metoda `render()` a unei componente React randează același rezultat considerând aceleași props și același state, poți folosi `React.PureComponent` pentru o creștere de performanță în unele cazuri.
 
 > Notă
 >
@@ -124,7 +124,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-`React.memo` este un [component higher order](/docs/higher-order-components.html). Este similar cu [`React.PureComponent`](#reactpurecomponent) dar pentru componente definite prin funcții.
+`React.memo` este un [component higher order](/docs/higher-order-components.html). Este similar cu [`React.PureComponent`](#reactpurecomponent), dar pentru componente definite prin funcții.
 
 Dacă componentul funcție randează același rezultat considerând aceleași props, îl poți împacheta într-un apel către `React.memo` pentru o îmbunătățire a performaneței în unele cazuri, prin memorarea rezultatului. Asta înseamnă că React nu va randa din nou componenta, ci va folosi ultimul rezultat randat.
 
@@ -275,7 +275,7 @@ Intoarce structura de date opaca `children` ca un array liniar cu cheile asociat
 
 ### `React.Fragment` {#reactfragment}
 
-Componentul `React.Fragment` iți permite să întorci mai multe elemente în metoda `render()` fără a crea elemente DOM adiționale:
+Componenta `React.Fragment` iți permite să întorci mai multe elemente în metoda `render()` fără a crea elemente DOM adiționale:
 
 ```javascript
 render() {
@@ -298,7 +298,7 @@ De asemenea poți folosi sintaxa scurtă `<></>`. Pentru mai multe informații, 
 
 ### `React.forwardRef` {#reactforwardref}
 
-`React.forwardRef` crează un component React care dă mai departe atributul [ref](/docs/refs-and-the-dom.html) pe care îl primește, unui alt component mai jos în ierarhie. Această tehnică nu este foarte comună dar este folositoare în mod special în doua scenarii:
+`React.forwardRef` crează o componentă React care dă mai departe atributul [ref](/docs/refs-and-the-dom.html) pe care îl primește, unei alte componente mai jos în ierarhie. Această tehnică nu este foarte comună, dar este folositoare în mod special în doua scenarii:
 
 * [Pasarea refs către DOM components](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
 * [Pasarea refs în higher-order-components](/docs/forwarding-refs.html#forwarding-refs-în-higher-order-components)
@@ -315,31 +315,27 @@ Pentru mai multe informații vezi [pasarea refs](/docs/forwarding-refs.html).
 
 ### `React.lazy` {#reactlazy}
 
-`React.lazy()` iți permite să definesti un component care este încărcat dinamic. Asta ajută la reducerea dimensiunii bundle-ului și întârzie încărcarea componentelor care nu sunt folosite la randarea inițială.
+`React.lazy()` iți permite să definesti o componentă care este încărcată dinamic. Asta ajută la reducerea dimensiunii bundle-ului și întârzie încărcarea componentelor care nu sunt folosite la randarea inițială.
 
 Poți învăța cum să îl folosești din [documentația code splitting](/docs/code-splitting.html#reactlazy). Te poți uita de asemenea și pe [acest articol](https://medium.com/@pomber/lazy-loading-and-preloading-components-în-react-16-6-804de091c82d) care arată cum să îl folosești mai în detaliu.
 
 ```js
-// Acest component este încărcat dinamic
+// Acestă componentă este încărcată dinamic
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
-Reține că pentru randarea componentelor `lazy` este necesară randarea unui component`<React.Suspense>` mai sus în ierarhia de randare. Așa specifici un indicator de încărcare.
+Reține că pentru randarea componentelor `lazy` este necesară randarea unei componente`<React.Suspense>` mai sus în ierarhia de randare. Așa specifici un indicator de încărcare.
 
 > **Notă**
 >
-> Folorirea `React.lazy` cu importuri dinamice face obligatorie disponibilitatea Promise-urilor în mediul JS. Acest lucru cere un polyfill pe IE11 și pe versiuni mai vechi.
+> Folosirea `React.lazy` cu importuri dinamice face obligatorie disponibilitatea Promise-urilor în mediul JS. Acest lucru cere un polyfill pe IE11 și pe versiuni mai vechi.
 
 ### `React.Suspense` {#reactsuspense}
 
-<<<<<<< HEAD
 `React.Suspense` iți permite să specifici indicatorul de încărcare în cazul în care unele componente din ierarhia copil nu sunt gata pentru randare. În prezent, componentele lazy loading sunt **singurele** cazuri suportate de `<React.Suspense>`:
-=======
-`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
->>>>>>> 081bb31226919062938ef924472ba1b4170facfc
 
 ```js
-// Acest component este încărcat dinamic
+// Acestă componentă este încărcată dinamic
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
@@ -356,7 +352,7 @@ function MyComponent() {
 
 Este documentat în [ghidul de code splitting](/docs/code-splitting.html#reactlazy). Reține ca `lazy` se pot afla adânc în ierarhia `Suspense` -- nu trebuie să le împacheteze pe toate. Cea mai buna practică este să pui `<Suspense>` unde vrei să vezi un indicator de încărcare, dar să folosești `lazy()` unde vrei să faci code splitting.
 
-Deși nu este acoperit în prezent, în viitor planificam ca `Suspense` să acopere scenarii precum requesturi pe rețea. Poti să citesti despre asta în [roadmap-ul nostru](/blog/2018/11/27/react-16-roadmap.html).
+Deși nu este acoperit în prezent, în viitor planificam ca `Suspense` să acopere scenarii precum requesturi pe rețea. Poți să citești despre asta în [roadmap-ul nostru](/blog/2018/11/27/react-16-roadmap.html).
 
 >Notă:
 >

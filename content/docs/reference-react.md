@@ -104,7 +104,11 @@ Vezi [Referință API pentru React.Component](/docs/react-component.html) pentru
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+<<<<<<< HEAD
 `React.PureComponent` este similar cu [`React.Component`](#reactcomponent). Diferența dintre ele este că [`React.Component`](#reactcomponent) nu implementează [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), iar `React.PureComponent` o implementează cu un shallow prop și compararea state-ului. 
+=======
+`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison.
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
 
 Dacă metoda `render()` a unei componente React randează același rezultat considerând aceleași props și același state, poți folosi `React.PureComponent` pentru o creștere de performanță în unele cazuri.
 
@@ -128,7 +132,13 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 Dacă componentul funcție randează același rezultat considerând aceleași props, îl poți împacheta într-un apel către `React.memo` pentru o îmbunătățire a performaneței în unele cazuri, prin memorarea rezultatului. Asta înseamnă că React nu va randa din nou componenta, ci va folosi ultimul rezultat randat.
 
+<<<<<<< HEAD
 În mod implicit, va compara obiectele din props doar pe primul nivel. Dacă vrei să controlezi logica comparației, poți scrie o funcție personalizată de comparație ca al doilea argument.
+=======
+`React.memo` only affects props changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
+
+By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
 
 ```javascript
 function MyComponent(props) {

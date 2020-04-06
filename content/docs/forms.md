@@ -1,6 +1,6 @@
 ---
 id: forms
-title: Forms
+title: Formulare
 permalink: docs/forms.html
 prev: lists-and-keys.html
 next: lifting-state-up.html
@@ -9,27 +9,28 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-Deoarece elementele de formular păstrează în mod natural o stare internă, elementele din formular HTML funcționează puțin diferit față de celelalte elemente DOM din React. De exemplu, acest formular în HTML acceptă un singur nume:
+
+Formularele HTML funcționează un pic diferit față de alte elemente DOM din React, datorită faptului că elementele din formulare își păstrează o parte din stare în mod natural. De exemplu, următorul formular, scris in HTML simplu, acceptă un singur nume:
 
 ```html
 <form>
   <label>
-    Name:
+    Nume:
     <input type="text" name="name" />
   </label>
   <input type="submit" value="Submit" />
 </form>
 ```
 
-Când utilizatorul depune acest formular va avea comportamentul implicit al unui form HTML de navigare către o pagină nouă. Dacă doriți acest comportament în React, cu siguranta va functiona. Totuși în majoritatea cazurilor, este convenabil să existe o funcție in JavaScript care sa gestioneaze submiterea formului și accesul la datele introduse de utilizator în form. Modul standard pentru a realiza acest lucru este cu o tehnică numită "componente controlate".
+Acest formular menține comportamentul natural al unui formular HTML de a naviga către o nouă pagină in momentul în care utilizatorul depune formularul. Daca se dorește acest comportament in React, el funcționează. Totuși, in cele mai multe cazuri, este mai convenabil să avem o funcție JavaScript care să se ocupe de procesul de depunere al formularului și care să aibă acces la datele pe care utilizatorul le-a introdus in formular. Modalitatea standard prin care se poate realiza acest lucru este o tehnică numită "componente controlate".
 
-## Controlled Components {#controlled-components}
+## Componente controlate {#controlled-components}
 
-În HTML, elementele specifice formului, cum ar fi `<input>`, `<textarea>`, și `<select>` îsi păstrează în mod obișnuit starea și o actualizează în funcție de datele introduse de utilizator. În React, starea mutabilă este de obicei păstrată în proprietatea state a componentelor și este actualizată doar cu [`setState()`](/docs/react-component.html#setstate).
+În HTML, elementele din formulare precum `<input>`, `<textarea>`, și `<select>` își mențin starea în mod natural și o actualizează pe baza informațiilor introduse de utilizator. În React, starea variabilă este in mod normal ținută in proprietatea de stare a unei componente, și actualizată numai prin [`setState()`](/docs/react-component.html#setstate).
 
-Putem combina cele două, făcând ca starea React să fie "singura sursă de adevăr". In felul acesta componenta React care redă un formular va controla și ceea ce se întâmplă în acel formular pe baza datelor introduse ulterior de utilizator. Astfel un element de intrare al formului a cărui valoare este controlată de React se numește "componentă controlată".
+Putem să combinăm cele doua abordări prin declararea stării din React ca fiind "singura sursă a adevărului". În acest caz, componenta din React care va randa formularul va controla și ce se va întampla în interiorul formularului în momentul în care informația este modificată. Un element al formularului a cărui valoare este controlată de React in acest mod se numește "componentă controlată".  
 
-De exemplu, dacă dorim ca în exemplul anterior să autentificăm numele la momentul trimiterii, putem implementa formularul ca o componentă controlată:
+De exemplu, dacă ne dorim să modificăm codul anterior și să afișam numele la depunerea formularului, putem rescrie formularul ca pe o componentă controlată:
 
 ```javascript{4,10-12,24}
 class NameForm extends React.Component {
@@ -46,7 +47,7 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    alert('Un nume a fost introdus: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -54,7 +55,7 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          Nume:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
@@ -64,11 +65,11 @@ class NameForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
+[**Incearcă exemplul pe site-ul CodePen**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
 
-Deoarece atributul `value` este setat in elementul form, valoarea afișată va fi întotdeauna `this.state.value`, făcând starea React sursa de adevăr. Valoarea afișată va fi actualizată pe masura ce  utilizatorul introduce datele deoarece `handleChange` se executa cu fiecare apăsare de tastă pentru a actualiza starea React.
+Din moment ce atributul `value` este configurat pe elementul nostru din formular, valoarea afișată va fi întotdeauna `this.state.value`, starea din React devenind sursa adevărului. Evenimentul `handleChange` va fi executat la fiecare apăsare de tastă pentru a actualiza starea din React și astfel valoarea afișată va fi actualizată în timp ce utilizatorul tastează. 
 
-Pentru o componentă controlată, fiecare stare mutată va avea asociată o funcție de manipulare. Acest lucru face ca modificarea sau validarea intrărilor utilizatorului se fie directa. De exemplu, dacă vrem să fortam că numele sa fie scrise cu toate literele majuscule, putem implementa  `handleChange` astfel:
+În componentele controlate, fiecare modificare a stării va avea asociată o funcție de manipulare a datelor. Acest lucru face foarte facilă modificarea sau validarea datelor introduse de utilizator. De exemplu, dacă ne dorim să impunem scrierea numelor cu caractere majuscule, putem să scriem funcția `handleChange` in felul următor:
 
 ```javascript{2}
 handleChange(event) {
@@ -76,24 +77,24 @@ handleChange(event) {
 }
 ```
 
-## The textarea Tag {#the-textarea-tag}
+## Elementul textarea {#the-textarea-tag}
 
-În HTML, un element `<textarea>` definește textul prin copii(children) săi::
+În HTML, un element `<textarea>` își definește textul prin elementele sale copil:
 
 ```html
 <textarea>
-  Buna, aceasta este o zona pentru introducerea textului.
+  Salut, aceste este un text într-o zonă de text
 </textarea>
 ```
 
-În React, un `<textarea>` foloseste în schimb un atribut `value`. În felul acesta, un form ce utilizează `<textarea>` poate fi implementat foarte asemănător cu un form care utilizează o intrare cu o singură linie:
+În React, elementul `<textarea>` folosește în schimb atributul `value`. În acest fel, un formular care folosește un element `<textarea>` poate fi scris foarte asemănător cu unul care folosește un element `<input>` cu o singură linie de text:
 
 ```javascript{4-6,12-14,26}
 class EssayForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Va rugam sa scrieti un eseu despre elementul DOM favorit.'
+      value: 'Te rog să scrii un eseu despre elementul tău favorit din DOM.'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -105,7 +106,7 @@ class EssayForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Eseul a fost trimis: ' + this.state.value);
+    alert('S-a trimis un eseu: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -113,7 +114,7 @@ class EssayForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Essay:
+          Eseu:
           <textarea value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
@@ -123,22 +124,23 @@ class EssayForm extends React.Component {
 }
 ```
 
-Observați `this.state.value` este inițializat în constructor, astfel încât zona text să fie presentata cu acelasi text.
+De remarcat că `this.state.value` este inițializată in constructor, și astfel textarea conține din start un text in interior.
 
-## The select Tag {#the-select-tag}
 
-În HTML, `<select>` creează o listă derulantă. De exemplu, acest HTML creează o listă drop-down de arome:
+## Elementul select {#the-select-tag}
+
+În HTML, un element `<select>` crează o listă verticală. De exemplu, acest HTML crează o listă verticală de arome:
 
 ```html
 <select>
-  <option value="grapefruit">Grapefruit</option>
-  <option value="lime">Lime</option>
-  <option selected value="coconut">Coconut</option>
+  <option value="grapefruit">Grepfrut</option>
+  <option value="lime">Lămâie verde</option>
+  <option selected value="coconut">Nucă de cocos</option>
   <option value="mango">Mango</option>
 </select>
 ```
 
-Rețineți că opțiunea Coconut este selectată inițial datorită atributului `selected`. React, în loc să utilizeze atributul `selected`, utilizează un atributul `value` pe rădăcină `select` tag. Acest lucru este mai convenabil într-o componentă controlată, deoarece trebuie doar să o actualizați într-un singur loc. De exemplu:
+De remarcat că opțiunea `Nuca de cocos` este selectată inițial, datorită atributului `selected`. În schimb, în React vom folosi un atribut `value` direct pe elementul rădăcină `select` în locul atributului `selected`. Această modalitate este mai convenabilă într-o componentă controlată datorită faptului că actualizarea se va face într-un singur loc. De exemplu:
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
@@ -155,7 +157,7 @@ class FlavorForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Aroma ta preferată e: ' + this.state.value);
+    alert('Aroma ta favorită este: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -163,11 +165,11 @@ class FlavorForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Alege aroma preferata:
+          Alege aroma favorită:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
+            <option value="grapefruit">Grepfrut</option>
+            <option value="lime">Lămâie verde</option>
+            <option value="coconut">Nuca de cocos</option>
             <option value="mango">Mango</option>
           </select>
         </label>
@@ -178,33 +180,33 @@ class FlavorForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
+[**Incearcă exemplul pe site-ul CodePen**](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
 
-În general, acest lucru face ca `<input type="text">`, `<textarea>`, and `<select>` să funcționeze foarte asemănător - toate acceptă un atribut `value` pe care îl puteți utiliza pentru a implementa o componentă controlată.
+Această abordare are ca efect funcționarea similara a elementelor `<input type="text">`, `<textarea>`, și `<select>` - toate acceptă un atribut `value` care se poate folosi pentru a implementa o componentă controlată. 
 
 > Notă
 >
-> Pentru a selecta mai multe opțiuni cu o eticheta `select`, puteți pasapentru atributul `value` un array(o matrice):
+> Atributul `value` poate conține un vector, permițând selectarea mai multor opțiuni într-un element `select`:
 >
 >```js
 ><select multiple={true} value={['B', 'C']}>
 >```
 
-## The file input Tag {#the-file-input-tag}
+## Elementul input type="file" {#the-file-input-tag}
 
-În HTML, un `<input type="file">` permite utilizatorului să aleagă unul sau mai multe fișiere din spațiul de stocare al dispozitivului pentru a fi încărcat pe un server sau pentru a fi manipulate de JavaScript prin [API-ul de fișiere](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).
+În HTML, un element `<input type="file">` permite utilizatorului să aleagă unul sau mai multe fișiere locale pentru a fi încărcate pe un server sau manipulate prin JavaScript prin [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).
 
 ```html
 <input type="file" />
 ```
 
-Deoarece valoarea sa este doar pentru citire, este o componentă **necontrolată** în React. Va fi presentata in detaliu [mai tirziu în documentație](/docs/uncontrolled-components.html#the-file-input-tag) împreună cu alte componente necontrolate.
+Din cauza faptului că valoarea acestui element nu poate fi decât citită, acesta este o componentă **necontrolată**. Utilizarea ei este discutată împreuna cu alte componente necontrolate [mai tarziu in documentatie](/docs/uncontrolled-components.html#the-file-input-tag).
 
-## Handling Multiple Inputs {#handling-multiple-inputs} / Manipulare de intrări multiple
+## Operarea simultană mai multor elemente input {#handling-multiple-inputs}
 
-Atunci când aveți nevoie să gestionați mai multe elemente de intrare controlate (`input`), puteți adăuga un atribut `name` pentru fiecare element și lăsați funcția de manipulare să aleagă ce trebuie să facă în funcție de valoarea lui `event.target.name`.
+Când se dorește operarea simultană a mai multor componenete controlate de tipul `input`, se poate adăuga un atribut `name` fiecărei componente și funcția de manipulare va decide execuția bazându-se pe valoarea din `event.target.name`.
 
-exemplu:
+De exemplu:
 
 ```javascript{15,18,28,37}
 class Reservation extends React.Component {
@@ -241,7 +243,7 @@ class Reservation extends React.Component {
         </label>
         <br />
         <label>
-          Number of guests:
+          Număr de invitați:
           <input
             name="numberOfGuests"
             type="number"
@@ -254,9 +256,9 @@ class Reservation extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
+[**Incearcă exemplul pe site-ul CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
 
-Rețineți modul în care am folosit sintaxa ES6 pentru [proprietatea procesată nume](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) pentru a actualiza starea cheii corespunzătoare datei de intrare furnizate:
+A se nota folosirea sintaxei ES6 [nume de proprietăți generate](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) pentru a actualiza cheia proprietății de stare care corespunde numelui elementului de input selectat:
 
 ```js{2}
 this.setState({
@@ -264,7 +266,7 @@ this.setState({
 });
 ```
 
-Este echivalent cu codul ES5 urmator:
+Codul de mai sus este echivalentul sintaxei ES5
 
 ```js{2}
 var partialState = {};
@@ -272,13 +274,13 @@ partialState[name] = value;
 this.setState(partialState);
 ```
 
-De asemenea, deoarece `setState()` [imbina automat o stare parțială cu o starea curenta](/docs/state-and-lifecycle.html#state-updates-are-merged), trebuie doar să o chemăm cu parțiile schimbate.
+De asemenea, din moment ce `setState()` în mod automat [contopește o stare parțială în starea curentă](/docs/state-and-lifecycle.html#state-updates-are-merged), o putem apela folosind ca argument doar ceea ce s-a modificat. 
 
-## Controlled Input Null Value {#controlled-input-null-value} / Valoarea  de Intrare Controlată Nulă 
+## Componentă controlată cu valoare Null {#controlled-input-null-value}
 
-Specificînd proprietatea value pentru o [componentă controlată](/docs/forms.html#controlled-components), va împiedica utilizatorul să schimbe intrarea, doar dacă doriți acest lucru. Dacă ați specificat o `value`, dar intrarea este încă editabilă, este posibil să fi setat `value` fără să vă dați seama `undefined` sau `null`.
+Specificarea proprietații value pentru o [componentă controlată](/docs/forms.html#controlled-components) face ca modificarea valorii acesteia să fie posibilă doar dacă acest lucru se dorește explicit. Dacă proprietatea `value` este specificată, iar componenta rămâne editabilă, valoarea acesteia a fost cel mai probabil setată ca `undefined` sau `null`.
 
-Următorul cod demonstrează acest lucru. (Intrarea este blocată la început, dar devine editabilă după o scurtă întârziere.)
+Codul următor demonstrează acest caz. (În primă fază, conținului elementului `input` nu poate fi modificat, dar devine editabil după o secundă. )
 
 ```javascript
 ReactDOM.render(<input value="hi" />, mountNode);
@@ -289,10 +291,10 @@ setTimeout(function() {
 
 ```
 
-## Alternatives to Controlled Components {#alternatives-to-controlled-components} / Alternative pentru componentele controlate 
+## Alternative pentru componentele controlate {#alternatives-to-controlled-components}
 
-Uneori este dificil să folosiți componente controlate, deoarece trebuie să implementați un handler(manipulant) pentru evenimente pentru fiecare situație în care datele dvs. se pot schimba și să conducă toate starile de intrare printr-o componentă React. Acest lucru poate deveni deosebit de enervant când convertiți un cod de bază preexistentă în React sau integrați o aplicație React cu o bibliotecă non-React. În aceste situații, vă recomandăm să verificați [componentele necontrolate](/docs/uncontrolled-components.html), o tehnică alternativă pentru implementarea formular de intrare.
+Uneori folosirea componentelor controlate poate să fie dificilă, deoarece necesită implementarea unei funcții de manipulare a datelor pentru fiecare modalitate în care valoarea elementelor din formular se poate schimba și rutarea stării elementului printr-o componentă React. Acestă abordare poate să devină foarte incomodă cand se dorește transformarea unei aplicații existente într-o aplicație de tip React sau integrarea unei aplicații React cu o librărie non-React. În aceste situații, o soluție poate fi folosirea [componentelor necontrolate](/docs/uncontrolled-components.html), o tehnică alternativă pentru implementarea formularelor de introducere a datelor. 
 
-## Fully-Fledged Solutions {#fully-fledged-solutions} / Soluții complete
+## Soluții complete {#fully-fledged-solutions}
 
-Dacă doriti o soluție completă incluzând validarea, păstrarea câmpurilor vizitate și administrarea depunerii formularului, atunci [Formik](https://jaredpalmer.com/formik) este una dintre alegerile populare. În orice caz, este construită pe aceleași principii ale componentelor controlate și ale stării gestionate - deci nu neglijați să le învățați.
+Dacă se dorește folosirea unei soluții complete care să includă validare, memorarea câmpurilor vizitate și administrarea depunerii formularului, [Formik](https://jaredpalmer.com/formik) este una dintre cele mai populare alternative. De menționat totuși că și această soluție este implementată pe principiul componentelor controlate și al stării gestionate - deci nu neglijați studiul acestora. 

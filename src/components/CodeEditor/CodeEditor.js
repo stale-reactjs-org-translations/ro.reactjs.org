@@ -62,12 +62,12 @@ class CodeEditor extends Component {
     if (showBabelErrorMessage) {
       errorMessage = (
         <span>
-          Babel could not be loaded.
+          Babel nu a putut fi încărcat.
           <br />
           <br />
-          This can be caused by an ad blocker. If you're using one, consider
-          adding reactjs.org to the whitelist so the live code examples will
-          work.
+          Acest lucru poate fi cauzat de blocarea reclamelor. Daca folosești
+          așa ceva, adaugă ro.reactjs.org în listă astfel încât codul exemplu
+          live să funcționeze.
         </span>
       );
     } else if (error != null) {
@@ -105,7 +105,7 @@ class CodeEditor extends Component {
                 color: colors.white,
               }}>
               <MetaTitle onDark={true}>
-                Live JSX Editor
+                Editor JSX Live
                 <label
                   css={{
                     fontSize: 14,
@@ -175,7 +175,7 @@ class CodeEditor extends Component {
                   cssProps={{
                     color: colors.white,
                   }}>
-                  Error
+                  Eroare
                 </MetaTitle>
               </div>
               <pre
@@ -206,7 +206,7 @@ class CodeEditor extends Component {
                   padding: '0 10px',
                   backgroundColor: colors.divider,
                 }}>
-                <MetaTitle>Result</MetaTitle>
+                <MetaTitle>Rezultat</MetaTitle>
               </div>
               <div
                 id={containerNodeID}

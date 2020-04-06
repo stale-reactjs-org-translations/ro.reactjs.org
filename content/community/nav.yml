@@ -2,6 +2,8 @@
   items:
     - id: support
       title: Sprijin
+    - id: team
+      title: Team
     - id: courses
       title: Cursuri
     - id: examples

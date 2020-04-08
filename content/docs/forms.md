@@ -9,6 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+
 Formularele HTML funcționează un pic diferit față de alte elemente DOM din React, datorită faptului că elementele din formulare își păstrează o parte din stare în mod natural. De exemplu, următorul formular, scris in HTML simplu, acceptă un singur nume:
 
 ```html
@@ -125,6 +126,7 @@ class EssayForm extends React.Component {
 
 De remarcat că `this.state.value` este inițializată in constructor, și astfel textarea conține din start un text in interior.
 
+
 ## Elementul select {#the-select-tag}
 
 În HTML, un element `<select>` crează o listă verticală. De exemplu, acest HTML crează o listă verticală de arome:
@@ -137,6 +139,7 @@ De remarcat că `this.state.value` este inițializată in constructor, și astfe
   <option value="mango">Mango</option>
 </select>
 ```
+
 De remarcat că opțiunea `Nuca de cocos` este selectată inițial, datorită atributului `selected`. În schimb, în React vom folosi un atribut `value` direct pe elementul rădăcină `select` în locul atributului `selected`. Această modalitate este mai convenabilă într-o componentă controlată datorită faptului că actualizarea se va face într-un singur loc. De exemplu:
 
 ```javascript{4,10-12,24}
@@ -263,7 +266,7 @@ this.setState({
 });
 ```
 
-Codul de mai sus este echivalentul sintaxei ES5:
+Codul de mai sus este echivalentul sintaxei ES5
 
 ```js{2}
 var partialState = {};

@@ -68,6 +68,7 @@ class NameForm extends React.Component {
 
 Din moment ce atributul `value` este configurat pe elementul nostru din formular, valoarea afișată va fi întotdeauna `this.state.value`, starea din React devenind sursa adevărului. Evenimentul `handleChange` va fi executat la fiecare apăsare de tastă pentru a actualiza starea din React și astfel valoarea afișată va fi actualizată în timp ce utilizatorul tastează. 
 
+<<<<<<< HEAD
 În componentele controlate, fiecare modificare a stării va avea asociată o funcție de manipulare a datelor. Acest lucru face foarte facilă modificarea sau validarea datelor introduse de utilizator. De exemplu, dacă ne dorim să impunem scrierea numelor cu caractere majuscule, putem să scriem funcția `handleChange` in felul următor:
 
 ```javascript{2}
@@ -75,6 +76,9 @@ handleChange(event) {
   this.setState({value: event.target.value.toUpperCase()});
 }
 ```
+=======
+With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
+>>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
 
 ## Elementul textarea {#the-textarea-tag}
 

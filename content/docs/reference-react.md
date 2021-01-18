@@ -124,9 +124,15 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
+<<<<<<< HEAD
 `React.memo` este un [component higher order](/docs/higher-order-components.html). Este similar cu [`React.PureComponent`](#reactpurecomponent), dar pentru componente definite prin funcții.
 
 Dacă componentul funcție randează același rezultat considerând aceleași props, îl poți împacheta într-un apel către `React.memo` pentru o îmbunătățire a performaneței în unele cazuri, prin memorarea rezultatului. Asta înseamnă că React nu va randa din nou componenta, ci va folosi ultimul rezultat randat.
+=======
+`React.memo` is a [higher order component](/docs/higher-order-components.html).
+
+If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+>>>>>>> 3844da103db4c2dea4783f5b3a2a0b53708d04ab
 
 În mod implicit, va compara obiectele din props doar pe primul nivel. Dacă vrei să controlezi logica comparației, poți scrie o funcție personalizată de comparație ca al doilea argument.
 

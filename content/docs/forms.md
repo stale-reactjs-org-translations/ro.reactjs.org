@@ -31,7 +31,7 @@ Putem să combinăm cele doua abordări prin declararea stării din React ca fii
 
 De exemplu, dacă ne dorim să modificăm codul anterior și să afișam numele la depunerea formularului, putem rescrie formularul ca pe o componentă controlată:
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -68,6 +68,7 @@ class NameForm extends React.Component {
 
 Din moment ce atributul `value` este configurat pe elementul nostru din formular, valoarea afișată va fi întotdeauna `this.state.value`, starea din React devenind sursa adevărului. Evenimentul `handleChange` va fi executat la fiecare apăsare de tastă pentru a actualiza starea din React și astfel valoarea afișată va fi actualizată în timp ce utilizatorul tastează. 
 
+<<<<<<< HEAD
 În componentele controlate, fiecare modificare a stării va avea asociată o funcție de manipulare a datelor. Acest lucru face foarte facilă modificarea sau validarea datelor introduse de utilizator. De exemplu, dacă ne dorim să impunem scrierea numelor cu caractere majuscule, putem să scriem funcția `handleChange` in felul următor:
 
 ```javascript{2}
@@ -75,6 +76,9 @@ handleChange(event) {
   this.setState({value: event.target.value.toUpperCase()});
 }
 ```
+=======
+With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
+>>>>>>> ed88a240d9c97822cc2f02074306965a1a4f4ac4
 
 ## Elementul textarea {#the-textarea-tag}
 
@@ -219,7 +223,7 @@ class Reservation extends React.Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.name === 'isGoing' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({

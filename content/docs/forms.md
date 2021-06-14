@@ -9,7 +9,11 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<<<<<<< HEAD
 Formularele HTML funcționează un pic diferit față de alte elemente DOM din React, datorită faptului că elementele din formulare își păstrează o parte din stare în mod natural. De exemplu, următorul formular, scris in HTML simplu, acceptă un singur nume:
+=======
+HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ```html
 <form>
@@ -31,7 +35,7 @@ Putem să combinăm cele doua abordări prin declararea stării din React ca fii
 
 De exemplu, dacă ne dorim să modificăm codul anterior și să afișam numele la depunerea formularului, putem rescrie formularul ca pe o componentă controlată:
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -68,6 +72,7 @@ class NameForm extends React.Component {
 
 Din moment ce atributul `value` este configurat pe elementul nostru din formular, valoarea afișată va fi întotdeauna `this.state.value`, starea din React devenind sursa adevărului. Evenimentul `handleChange` va fi executat la fiecare apăsare de tastă pentru a actualiza starea din React și astfel valoarea afișată va fi actualizată în timp ce utilizatorul tastează. 
 
+<<<<<<< HEAD
 În componentele controlate, fiecare modificare a stării va avea asociată o funcție de manipulare a datelor. Acest lucru face foarte facilă modificarea sau validarea datelor introduse de utilizator. De exemplu, dacă ne dorim să impunem scrierea numelor cu caractere majuscule, putem să scriem funcția `handleChange` in felul următor:
 
 ```javascript{2}
@@ -75,6 +80,9 @@ handleChange(event) {
   this.setState({value: event.target.value.toUpperCase()});
 }
 ```
+=======
+With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ## Elementul textarea {#the-textarea-tag}
 
@@ -219,7 +227,7 @@ class Reservation extends React.Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.name === 'isGoing' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({

@@ -84,7 +84,11 @@ Pentru a face interfața grafică interactivă, trebuie să puteți declanșa mo
 
 Pentru a construi corect aplicația, trebuie mai întâi să vă gândiți la numarul minim de schimbări in state de care aplicația dvs. are nevoie. Cheia aici este [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Aflați reprezentarea minimală absolută a state-ului de care are nevoie aplicația dvs. și calculați tot ce aveți nevoie la cerere. De exemplu, dacă construiți o listă TODO, păstrați un array de elemente TODO; nu păstrați o variabilă de state separată pentru numărul elementelor. În schimb, atunci când doriți să redați numărul de elemente. În schimb, când vreți să randați lungimea listei TODO,  luați lungimea array-ului de elemente TODO.
 
+<<<<<<< HEAD
 Gândiți-vă la toate fragmentele de date din exemplul aplicației noastre. Vom avem:
+=======
+Think of all the pieces of data in our example application. We have:
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
   * Lista originală de produse
   * Textul de căutare introdus de utilizator

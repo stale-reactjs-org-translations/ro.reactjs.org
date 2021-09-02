@@ -124,11 +124,21 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
+<<<<<<< HEAD
 `React.memo` este un [component higher order](/docs/higher-order-components.html). Este similar cu [`React.PureComponent`](#reactpurecomponent), dar pentru componente definite prin funcții.
 
 Dacă componentul funcție randează același rezultat considerând aceleași props, îl poți împacheta într-un apel către `React.memo` pentru o îmbunătățire a performaneței în unele cazuri, prin memorarea rezultatului. Asta înseamnă că React nu va randa din nou componenta, ci va folosi ultimul rezultat randat.
 
 În mod implicit, va compara obiectele din props doar pe primul nivel. Dacă vrei să controlezi logica comparației, poți scrie o funcție personalizată de comparație ca al doilea argument.
+=======
+`React.memo` is a [higher order component](/docs/higher-order-components.html).
+
+If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+
+`React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html), [`useReducer`](/docs/hooks-reference.html#usereducer) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
+
+By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 ```javascript
 function MyComponent(props) {
@@ -172,12 +182,16 @@ Codul scris cu [JSX](/docs/introducing-jsx.html) va fi convertit către `React.c
 ```
 React.cloneElement(
   element,
-  [props],
+  [config],
   [...children]
 )
 ```
 
+<<<<<<< HEAD
 Cloneaza și întoarce un nou element React folosind `element` ca punct de plecare. Elementul rezultat va avea props-urile elementului original cu noile props îmbinate doar pe primul nivel. Noii copii vor înlocui copiii existenti. Vor fi păstrate `key` și `ref` de la elementul original.
+=======
+Clone and return a new React element using `element` as the starting point. `config` should contain all new props, `key`, or `ref`. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved if no `key` and `ref` present in the `config`.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 `React.cloneElement()` este aproape echivalent cu:
 
@@ -185,7 +199,11 @@ Cloneaza și întoarce un nou element React folosind `element` ca punct de pleca
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
+<<<<<<< HEAD
 Cu toate acestea, pastreaza `ref`urile. Asta înseamnă că dacă un copil are `ref`, nu îl vei fura accidental de la parinte. Vei avea același `ref` atașat la noul element.
+=======
+However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element. The new `ref` or `key` will replace old ones if present.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 Acest API a fost introdus pentru a inlocui metoda depreciată `React.addons.cloneWithProps()`.
 

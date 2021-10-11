@@ -39,9 +39,13 @@ Dar cum vă daţi seama ce ar trebui sa fie o componenta de sine statoare? Utili
 
 Deoarece afișați adesea un model de date JSON unui utilizator, veți observa că, dacă modelul dvs. a fost construit corect, interfața dvs. de utilizator (și, prin urmare, structura dvs. de componente) se va potrivi de minune. Asta deoarece UI-ul și modelele de date tind să adere la aceeași *arhitectură de informații*. Separați-vă UI-ul în componente, în așa fel încât fiecare componentă se potrivește cu o singură parte din modelul dvs. de date.
 
-![Component diagram](../images/blog/thinking-in-react-components.png)
+![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
+<<<<<<< HEAD
 Puteti observa aici că avem cinci componente într-o singură aplicație. Am redactat italic datele pe care fiecare componentă le reprezintă.
+=======
+You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
   1. **`FilterableProductTable` (orange):** conţine exemplul în întregime
   2. **`SearchBar` (blue):** primește toate *datele introduse de utilizator*
@@ -84,7 +88,11 @@ Pentru a face interfața grafică interactivă, trebuie să puteți declanșa mo
 
 Pentru a construi corect aplicația, trebuie mai întâi să vă gândiți la numarul minim de schimbări in state de care aplicația dvs. are nevoie. Cheia aici este [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Aflați reprezentarea minimală absolută a state-ului de care are nevoie aplicația dvs. și calculați tot ce aveți nevoie la cerere. De exemplu, dacă construiți o listă TODO, păstrați un array de elemente TODO; nu păstrați o variabilă de state separată pentru numărul elementelor. În schimb, atunci când doriți să redați numărul de elemente. În schimb, când vreți să randați lungimea listei TODO,  luați lungimea array-ului de elemente TODO.
 
+<<<<<<< HEAD
 Gândiți-vă la toate fragmentele de date din exemplul aplicației noastre. Vom avem:
+=======
+Think of all the pieces of data in our example application. We have:
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
   * Lista originală de produse
   * Textul de căutare introdus de utilizator
@@ -137,7 +145,11 @@ Până acum, am construit o aplicație care se randează corect în funcție de 
 
 React face ca acest flux de date să fie explicit pentru a te ajuta să înțelegi cum funcționează programul dvs., dar necesită puțin mai mult cod scris decât tradiționala two-way data binding.
 
+<<<<<<< HEAD
 Dacă încercați să tastați sau să bifați caseta din versiunea curentă a exemplului, veți vedea că React ignoră input-ul dvs. Acest lucru este intenționat, întrucât am setat ca prop-ul `value` al campului `input` să fie întotdeauna egal cu `state`-ul pasat de la `FilterableProductTable`.
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 Să ne gândim la ce vrem să se întâmple. Vrem să ne asigurăm că, de fiecare dată când utilizatorul schimbă formularul, actualizăm state-ul pentru a reflecta input-ul utilizatorului. Întrucât componentele ar trebui să-și actualizeze propriul state, `FilterableProductTable` va transmite callback-uri către `SearchBar` care vor fi apelate ori de câte ori state-ul trebuie actualizat. Putem folosi event-ul `onChange` al input-urilor pentru a fi notificat. Callback-urile pasate de `FilterableProductTable` vor apela `setState()`, iar aplicația va fi actualizată.
 

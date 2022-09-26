@@ -9,7 +9,11 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<<<<<<< HEAD
 Formularele HTML funcționează un pic diferit față de alte elemente DOM din React, datorită faptului că elementele din formulare își păstrează o parte din stare în mod natural. De exemplu, următorul formular, scris in HTML simplu, acceptă un singur nume:
+=======
+HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+>>>>>>> e3073b03a5b9eff4ef12998841b9e56120f37e26
 
 ```html
 <form>
@@ -31,7 +35,7 @@ Putem să combinăm cele doua abordări prin declararea stării din React ca fii
 
 De exemplu, dacă ne dorim să modificăm codul anterior și să afișam numele la depunerea formularului, putem rescrie formularul ca pe o componentă controlată:
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -68,6 +72,7 @@ class NameForm extends React.Component {
 
 Din moment ce atributul `value` este configurat pe elementul nostru din formular, valoarea afișată va fi întotdeauna `this.state.value`, starea din React devenind sursa adevărului. Evenimentul `handleChange` va fi executat la fiecare apăsare de tastă pentru a actualiza starea din React și astfel valoarea afișată va fi actualizată în timp ce utilizatorul tastează. 
 
+<<<<<<< HEAD
 În componentele controlate, fiecare modificare a stării va avea asociată o funcție de manipulare a datelor. Acest lucru face foarte facilă modificarea sau validarea datelor introduse de utilizator. De exemplu, dacă ne dorim să impunem scrierea numelor cu caractere majuscule, putem să scriem funcția `handleChange` in felul următor:
 
 ```javascript{2}
@@ -75,6 +80,9 @@ handleChange(event) {
   this.setState({value: event.target.value.toUpperCase()});
 }
 ```
+=======
+With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
+>>>>>>> e3073b03a5b9eff4ef12998841b9e56120f37e26
 
 ## Elementul textarea {#the-textarea-tag}
 
@@ -219,7 +227,7 @@ class Reservation extends React.Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.name === 'isGoing' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
@@ -275,15 +283,19 @@ De asemenea, din moment ce `setState()` în mod automat [contopește o stare par
 
 ## Componentă controlată cu valoare Null {#controlled-input-null-value}
 
+<<<<<<< HEAD
 Specificarea proprietații value pentru o [componentă controlată](/docs/forms.html#controlled-components) face ca modificarea valorii acesteia să fie posibilă doar dacă acest lucru se dorește explicit. Dacă proprietatea `value` este specificată, iar componenta rămâne editabilă, valoarea acesteia a fost cel mai probabil setată ca `undefined` sau `null`.
+=======
+Specifying the `value` prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so. If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`.
+>>>>>>> e3073b03a5b9eff4ef12998841b9e56120f37e26
 
 Codul următor demonstrează acest caz. (În primă fază, conținului elementului `input` nu poate fi modificat, dar devine editabil după o secundă. )
 
 ```javascript
-ReactDOM.render(<input value="hi" />, mountNode);
+ReactDOM.createRoot(mountNode).render(<input value="hi" />);
 
 setTimeout(function() {
-  ReactDOM.render(<input value={null} />, mountNode);
+  ReactDOM.createRoot(mountNode).render(<input value={null} />);
 }, 1000);
 
 ```

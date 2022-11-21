@@ -6,7 +6,7 @@ class FileInput extends React.Component {
     this.fileInput = React.createRef();
   }
   handleSubmit(event) {
-    // highlight-range{4}
+    // highlight-range{3}
     event.preventDefault();
     alert(
       `Selected file - ${this.fileInput.current.files[0].name}`
@@ -28,7 +28,7 @@ class FileInput extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <FileInput />,
+const root = ReactDOM.createRoot(
   document.getElementById('root')
 );
+root.render(<FileInput />);

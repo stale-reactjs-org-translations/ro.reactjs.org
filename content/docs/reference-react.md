@@ -65,6 +65,13 @@ Suspense oferă componentelor posibilitatea de a "aștepta" ceva înainte de ran
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
+### Transitions {#transitions}
+
+*Transitions* are a new concurrent feature introduced in React 18. They allow you to mark updates as transitions, which tells React that they can be interrupted and avoid going back to Suspense fallbacks for already visible content.
+
+- [`React.startTransition`](#starttransition)
+- [`React.useTransition`](/docs/hooks-reference.html#usetransition)
+
 ### Hooks {#hooks}
 
 *Hooks* sunt un adaos nou în React 16.8. Îti permit să folosești state și alte funcționalități ale React fără a scrie o clasă. Hooks au o [secțiune dedicata a documentației](/docs/hooks-intro.html) și o referință separată a API-ului:
@@ -81,6 +88,12 @@ Suspense oferă componentelor posibilitatea de a "aștepta" ceva înainte de ran
   - [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)
   - [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)
   - [`useDebugValue`](/docs/hooks-reference.html#usedebugvalue)
+  - [`useDeferredValue`](/docs/hooks-reference.html#usedeferredvalue)
+  - [`useTransition`](/docs/hooks-reference.html#usetransition)
+  - [`useId`](/docs/hooks-reference.html#useid)
+- [Library Hooks](/docs/hooks-reference.html#library-hooks)
+  - [`useSyncExternalStore`](/docs/hooks-reference.html#usesyncexternalstore)
+  - [`useInsertionEffect`](/docs/hooks-reference.html#useinsertioneffect)
 
 * * *
 
@@ -88,7 +101,15 @@ Suspense oferă componentelor posibilitatea de a "aștepta" ceva înainte de ran
 
 ### `React.Component` {#reactcomponent}
 
+<<<<<<< HEAD
 `React.Component` este clasa de bază pentru componentele React atunci când sunt definite folosind [clase ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+=======
+> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Component` is the base class for React components when they are defined using [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ```javascript
 class Greeting extends React.Component {
@@ -104,13 +125,25 @@ Vezi [Referință API pentru React.Component](/docs/react-component.html) pentru
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+<<<<<<< HEAD
 `React.PureComponent` este similar cu [`React.Component`](#reactcomponent). Diferența dintre ele este că [`React.Component`](#reactcomponent) nu implementează [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), iar `React.PureComponent` o implementează cu un shallow prop și compararea state-ului. 
+=======
+> Try the new React documentation for [`PureComponent`](https://beta.reactjs.org/reference/react/PureComponent).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 Dacă metoda `render()` a unei componente React randează același rezultat considerând aceleași props și același state, poți folosi `React.PureComponent` pentru o creștere de performanță în unele cazuri.
 
 > Notă
 >
+<<<<<<< HEAD
 > Metoda `shouldComponentUpdate()` a clasei `React.PureComponent` compară obiectele doar pe primul nivel. Dacă acestea conțin structuri complexe de date, metoda poate produce false-negatives pentru diferențe pe nivele mai joase. Moștenește `PureComponent` doar atunci când te aștepți să ai props și state simple, sau foloseste [`forceUpdate()`](/docs/react-component.html#forceupdate) când știi că datele s-au schimbat. Sau consideră să folosești [obiecte imutabile](https://facebook.github.io/immutable-js/) pentru a facilita compararea datelor imbricate.
+=======
+> `React.PureComponent`'s `shouldComponentUpdate()` only shallowly compares the objects. If these contain complex data structures, it may produce false-negatives for deeper differences. Only extend `PureComponent` when you expect to have simple props and state, or use [`forceUpdate()`](/docs/react-component.html#forceupdate) when you know deep data structures have changed. Or, consider using [immutable objects](https://immutable-js.com/) to facilitate fast comparisons of nested data.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 >
 > În plus, metoda `shouldComponentUpdate()` a clasei `React.PureComponent` sare peste actualizarea props pentru întregul subtree. Asigură-te că toate componentele copil sunt "pure".
 
@@ -118,17 +151,31 @@ Dacă metoda `render()` a unei componente React randează același rezultat cons
 
 ### `React.memo` {#reactmemo}
 
+> Try the new React documentation for [`memo`](https://beta.reactjs.org/reference/react/memo).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
   /* randează folosind props */
 });
 ```
 
+<<<<<<< HEAD
 `React.memo` este un [component higher order](/docs/higher-order-components.html). Este similar cu [`React.PureComponent`](#reactpurecomponent), dar pentru componente definite prin funcții.
 
 Dacă componentul funcție randează același rezultat considerând aceleași props, îl poți împacheta într-un apel către `React.memo` pentru o îmbunătățire a performaneței în unele cazuri, prin memorarea rezultatului. Asta înseamnă că React nu va randa din nou componenta, ci va folosi ultimul rezultat randat.
 
 În mod implicit, va compara obiectele din props doar pe primul nivel. Dacă vrei să controlezi logica comparației, poți scrie o funcție personalizată de comparație ca al doilea argument.
+=======
+`React.memo` is a [higher order component](/docs/higher-order-components.html).
+
+If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+
+`React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html), [`useReducer`](/docs/hooks-reference.html#usereducer) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
+
+By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ```javascript
 function MyComponent(props) {
@@ -153,6 +200,10 @@ Această metodă există doar pentru **[optimizarea performanței](/docs/optimiz
 
 ### `createElement()` {#createelement}
 
+> Try the new React documentation for [`createElement`](https://beta.reactjs.org/reference/react/createElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createElement(
   type,
@@ -169,15 +220,23 @@ Codul scris cu [JSX](/docs/introducing-jsx.html) va fi convertit către `React.c
 
 ### `cloneElement()` {#cloneelement}
 
+> Try the new React documentation for [`cloneElement`](https://beta.reactjs.org/reference/react/cloneElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```
 React.cloneElement(
   element,
-  [props],
+  [config],
   [...children]
 )
 ```
 
+<<<<<<< HEAD
 Cloneaza și întoarce un nou element React folosind `element` ca punct de plecare. Elementul rezultat va avea props-urile elementului original cu noile props îmbinate doar pe primul nivel. Noii copii vor înlocui copiii existenti. Vor fi păstrate `key` și `ref` de la elementul original.
+=======
+Clone and return a new React element using `element` as the starting point. `config` should contain all new props, `key`, or `ref`. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved if no `key` and `ref` present in the `config`.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 `React.cloneElement()` este aproape echivalent cu:
 
@@ -185,13 +244,21 @@ Cloneaza și întoarce un nou element React folosind `element` ca punct de pleca
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
+<<<<<<< HEAD
 Cu toate acestea, pastreaza `ref`urile. Asta înseamnă că dacă un copil are `ref`, nu îl vei fura accidental de la parinte. Vei avea același `ref` atașat la noul element.
+=======
+However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element. The new `ref` or `key` will replace old ones if present.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 Acest API a fost introdus pentru a inlocui metoda depreciată `React.addons.cloneWithProps()`.
 
 * * *
 
 ### `createFactory()` {#createfactory}
+
+> Try the new React documentation for [`createFactory`](https://beta.reactjs.org/reference/react/createFactory).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 React.createFactory(type)
@@ -207,6 +274,10 @@ Nu vei apela de obicei `React.createFactory()` în mod direct dacă folosești J
 
 ### `isValidElement()` {#isvalidelement}
 
+> Try the new React documentation for [`isValidElement`](https://beta.reactjs.org/reference/react/isValidElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -217,7 +288,15 @@ Verifică dacă un obiect este un element React. Intoarce `true` sau `false`.
 
 ### `React.Children` {#reactchildren}
 
+<<<<<<< HEAD
 `React.Children` oferă utilități pentru lucrul cu structura de date opaca `this.props.children`.
+=======
+> Try the new React documentation for [`Children`](https://beta.reactjs.org/reference/react/Children).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Children` provides utilities for dealing with the `this.props.children` opaque data structure.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 #### `React.Children.map` {#reactchildrenmap}
 
@@ -275,7 +354,15 @@ Intoarce structura de date opaca `children` ca un array liniar cu cheile asociat
 
 ### `React.Fragment` {#reactfragment}
 
+<<<<<<< HEAD
 Componenta `React.Fragment` iți permite să întorci mai multe elemente în metoda `render()` fără a crea elemente DOM adiționale:
+=======
+> Try the new React documentation for [`Fragment`](https://beta.reactjs.org/reference/react/Fragment).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+The `React.Fragment` component lets you return multiple elements in a `render()` method without creating an additional DOM element:
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ```javascript
 render() {
@@ -293,12 +380,28 @@ De asemenea poți folosi sintaxa scurtă `<></>`. Pentru mai multe informații, 
 
 ### `React.createRef` {#reactcreateref}
 
+<<<<<<< HEAD
 `React.createRef` crează un [ref](/docs/refs-and-the-dom.html) care poate fi atașat elementelor React folosind atributul ref.
+=======
+> Try the new React documentation for [`createRef`](https://beta.reactjs.org/reference/react/createRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.createRef` creates a [ref](/docs/refs-and-the-dom.html) that can be attached to React elements via the ref attribute.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
 
+<<<<<<< HEAD
 `React.forwardRef` crează o componentă React care dă mai departe atributul [ref](/docs/refs-and-the-dom.html) pe care îl primește, unei alte componente mai jos în ierarhie. Această tehnică nu este foarte comună, dar este folositoare în mod special în doua scenarii:
+=======
+> Try the new React documentation for [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.forwardRef` creates a React component that forwards the [ref](/docs/refs-and-the-dom.html) attribute it receives to another component below in the tree. This technique is not very common but is particularly useful in two scenarios:
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 * [Pasarea refs către DOM components](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
 * [Pasarea refs în higher-order-components](/docs/forwarding-refs.html#forwarding-refs-în-higher-order-components)
@@ -315,7 +418,15 @@ Pentru mai multe informații vezi [pasarea refs](/docs/forwarding-refs.html).
 
 ### `React.lazy` {#reactlazy}
 
+<<<<<<< HEAD
 `React.lazy()` iți permite să definesti o componentă care este încărcată dinamic. Asta ajută la reducerea dimensiunii bundle-ului și întârzie încărcarea componentelor care nu sunt folosite la randarea inițială.
+=======
+> Try the new React documentation for [`lazy`](https://beta.reactjs.org/reference/react/lazy).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.lazy()` lets you define a component that is loaded dynamically. This helps reduce the bundle size to delay loading components that aren't used during the initial render.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 Poți învăța cum să îl folosești din [documentația code splitting](/docs/code-splitting.html#reactlazy). Te poți uita de asemenea și pe [acest articol](https://medium.com/@pomber/lazy-loading-and-preloading-components-în-react-16-6-804de091c82d) care arată cum să îl folosești mai în detaliu.
 
@@ -326,6 +437,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 Reține că pentru randarea componentelor `lazy` este necesară randarea unei componente`<React.Suspense>` mai sus în ierarhia de randare. Așa specifici un indicator de încărcare.
 
+<<<<<<< HEAD
 > **Notă**
 >
 > Folosirea `React.lazy` cu importuri dinamice face obligatorie disponibilitatea Promise-urilor în mediul JS. Acest lucru cere un polyfill pe IE11 și pe versiuni mai vechi.
@@ -333,6 +445,17 @@ Reține că pentru randarea componentelor `lazy` este necesară randarea unei co
 ### `React.Suspense` {#reactsuspense}
 
 `React.Suspense` iți permite să specifici indicatorul de încărcare în cazul în care unele componente din ierarhia copil nu sunt gata pentru randare. În prezent, componentele lazy loading sunt **singurele** cazuri suportate de `<React.Suspense>`:
+=======
+### `React.Suspense` {#reactsuspense}
+
+> Try the new React documentation for [`Suspense`](https://beta.reactjs.org/reference/react/Suspense).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+
+Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ```js
 // Acestă componentă este încărcată dinamic
@@ -352,8 +475,40 @@ function MyComponent() {
 
 Este documentat în [ghidul de code splitting](/docs/code-splitting.html#reactlazy). Reține ca `lazy` se pot afla adânc în ierarhia `Suspense` -- nu trebuie să le împacheteze pe toate. Cea mai buna practică este să pui `<Suspense>` unde vrei să vezi un indicator de încărcare, dar să folosești `lazy()` unde vrei să faci code splitting.
 
+<<<<<<< HEAD
 Deși nu este acoperit în prezent, în viitor planificam ca `Suspense` să acopere scenarii precum requesturi pe rețea. Poți să citești despre asta în [roadmap-ul nostru](/blog/2018/11/27/react-16-roadmap.html).
 
 >Notă:
 >
 >`React.lazy()` și `<React.Suspense>` nu sunt înca suportate de `ReactDOMServer`. Este o limitare știută care va fi rezolvată în viitor.
+=======
+> Note
+>
+> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+
+#### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
+During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
+When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
+
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+
+### `React.startTransition` {#starttransition}
+
+> Try the new React documentation for [`startTransition`](https://beta.reactjs.org/reference/react/startTransition).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+```js
+React.startTransition(callback)
+```
+`React.startTransition` lets you mark updates inside the provided callback as transitions. This method is designed to be used when [`React.useTransition`](/docs/hooks-reference.html#usetransition) is not available.
+
+> Note:
+>
+> Updates in a transition yield to more urgent updates such as clicks.
+>
+> Updates in a transition will not show a fallback for re-suspended content, allowing the user to continue interacting while rendering the update.
+>
+> `React.startTransition` does not provide an `isPending` flag. To track the pending status of a transition see [`React.useTransition`](/docs/hooks-reference.html#usetransition).
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e

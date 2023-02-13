@@ -8,7 +8,17 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
+<<<<<<< HEAD
 React este, în opinia noastră, modalitatea principală de a construi aplicații Web mari și rapide folosind JavaScript. A făcut faţă foarte bine nevoilor pe care le-am avut la Facebook și Instagram.
+=======
+> Try the new React documentation.
+> 
+> The updated [Thinking in React](https://beta.reactjs.org/learn/thinking-in-react) guide teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 Una dintre multiplele părți importante din React este cum te face să te gândești la aplicații pe măsură ce le construiești. În acest articol, vă vom îndruma prin procesul de creare al unui tabel de produse ce permite funcţionalitatea de căutate, folosind React.
 
@@ -39,9 +49,13 @@ Dar cum vă daţi seama ce ar trebui sa fie o componenta de sine statoare? Utili
 
 Deoarece afișați adesea un model de date JSON unui utilizator, veți observa că, dacă modelul dvs. a fost construit corect, interfața dvs. de utilizator (și, prin urmare, structura dvs. de componente) se va potrivi de minune. Asta deoarece UI-ul și modelele de date tind să adere la aceeași *arhitectură de informații*. Separați-vă UI-ul în componente, în așa fel încât fiecare componentă se potrivește cu o singură parte din modelul dvs. de date.
 
-![Component diagram](../images/blog/thinking-in-react-components.png)
+![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
+<<<<<<< HEAD
 Puteti observa aici că avem cinci componente într-o singură aplicație. Am redactat italic datele pe care fiecare componentă le reprezintă.
+=======
+You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
   1. **`FilterableProductTable` (orange):** conţine exemplul în întregime
   2. **`SearchBar` (blue):** primește toate *datele introduse de utilizator*
@@ -70,9 +84,15 @@ Pentru a construi o versiune statică a aplicației dvs. care redă modelul dvs.
 
 Puteți construi de sus în jos sau de jos în sus. Adică, puteți începe fie să construiți componentele din vârful ierarhie (adică începând cu `FilterableProductTable`), fie cu cele inferioare în ea (`ProductRow`). În exemplele mai simple, este de obicei mai ușor să mergeți de sus în jos, iar în cazul proiectelor mai mari, este mai ușor să mergeți de jos în sus și să scrieți teste pe măsură ce construiți.
 
+<<<<<<< HEAD
 La sfârșitul acestei etape, veți avea o bibliotecă de componente reutilizabile care vă vor reda într-un mod grafic modelul de date. Componentele vor avea numai metode `render()`, deoarece aceasta este o versiune statică a aplicației. Componenta din vârful ierarhiei (`FilterableProductTable`) vă va lua modelul de date ca un prop. Dacă faceţi o modificare de bază a modelului de date și apelaţi din nou `ReactDOM.render()`, interfața grafică va fi actualizată. Puteți să vedeți cum este actualizat interfața grafică și unde să faceți modificări, deoarece nu se întâmplă nimic complicat. **One-way data flow** din React (numit și *one-way binding*) păstrează totul modular și rapid.
 
 Consultaţi vă rog [documentaţia React](/docs/) dacă aveți nevoie de ajutor pentru completarea acestui pas.
+=======
+At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `root.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+
+Refer to the [React docs](/docs/getting-started.html) if you need help executing this step.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 ### Un scurt interludiu: Props vs State {#a-brief-interlude-props-vs-state}
 
@@ -84,7 +104,11 @@ Pentru a face interfața grafică interactivă, trebuie să puteți declanșa mo
 
 Pentru a construi corect aplicația, trebuie mai întâi să vă gândiți la numarul minim de schimbări in state de care aplicația dvs. are nevoie. Cheia aici este [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Aflați reprezentarea minimală absolută a state-ului de care are nevoie aplicația dvs. și calculați tot ce aveți nevoie la cerere. De exemplu, dacă construiți o listă TODO, păstrați un array de elemente TODO; nu păstrați o variabilă de state separată pentru numărul elementelor. În schimb, atunci când doriți să redați numărul de elemente. În schimb, când vreți să randați lungimea listei TODO,  luați lungimea array-ului de elemente TODO.
 
+<<<<<<< HEAD
 Gândiți-vă la toate fragmentele de date din exemplul aplicației noastre. Vom avem:
+=======
+Think of all the pieces of data in our example application. We have:
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
   * Lista originală de produse
   * Textul de căutare introdus de utilizator
@@ -137,10 +161,18 @@ Până acum, am construit o aplicație care se randează corect în funcție de 
 
 React face ca acest flux de date să fie explicit pentru a te ajuta să înțelegi cum funcționează programul dvs., dar necesită puțin mai mult cod scris decât tradiționala two-way data binding.
 
+<<<<<<< HEAD
 Dacă încercați să tastați sau să bifați caseta din versiunea curentă a exemplului, veți vedea că React ignoră input-ul dvs. Acest lucru este intenționat, întrucât am setat ca prop-ul `value` al campului `input` să fie întotdeauna egal cu `state`-ul pasat de la `FilterableProductTable`.
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 Să ne gândim la ce vrem să se întâmple. Vrem să ne asigurăm că, de fiecare dată când utilizatorul schimbă formularul, actualizăm state-ul pentru a reflecta input-ul utilizatorului. Întrucât componentele ar trebui să-și actualizeze propriul state, `FilterableProductTable` va transmite callback-uri către `SearchBar` care vor fi apelate ori de câte ori state-ul trebuie actualizat. Putem folosi event-ul `onChange` al input-urilor pentru a fi notificat. Callback-urile pasate de `FilterableProductTable` vor apela `setState()`, iar aplicația va fi actualizată.
 
 ## S-a terminat {#and-thats-it}
 
+<<<<<<< HEAD
 Sperăm că acest lucru vă oferă o idee despre cum să vă gândiți la construcția de componente și aplicații cu React. Deși este posibil să tastați ceva mai mult decât obișnuiați, amintiți-vă că, în general, cod este citit mult mai mult decât este scris și este extrem de ușor să citiți acest cod modular şi explicit. Pe măsură ce începeți să construiți mari librării de componente, veți aprecia această explicitate și modularitate, iar odată cu reutilizarea codului, liniile dvs. de cod vor începe să se micșoreze. :)
+=======
+Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more often than it's written, and it's less difficult to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
